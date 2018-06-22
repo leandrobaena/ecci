@@ -9,31 +9,31 @@ import javax.persistence.Id;
  * @author
  */
 @Entity
-public class Grupo implements Serializable {
+public class Labor implements Serializable {
 
     //<editor-fold desc="Atributos" defaultstate="collapsed">
     @Id
     /**
-     * Identificador del grupo
+     * Identificador de la labor
      */
     private int id;
 
     /**
-     * Nombre del grupo
+     * Nombre de la labor
      */
     private String nombre;
 
     /**
-     * Si el grupo está o no activo
+     * Si el escolaridad está o no activo
      */
     private boolean activo;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Contructores">
     /**
-     * Constructor por defecto del grupo
+     * Constructor por defecto de la labor
      */
-    public Grupo() {
+    public Labor() {
         this.id = 0;
         this.nombre = "";
         this.activo = false;
@@ -42,7 +42,7 @@ public class Grupo implements Serializable {
     /**
      * Constructor
      */
-    public Grupo(int id) {
+    public Labor(int id) {
         this.id = id;
         this.nombre = "";
         this.activo = false;
@@ -51,54 +51,54 @@ public class Grupo implements Serializable {
 
     //<editor-fold defaultstate="collapsed" desc="Métodos">
     /**
-     * Trae el identificador del grupo
+     * Trae el identificador de la labor
      *
-     * @return Identificador del grupo
+     * @return Identificador de la labor
      */
     public int getId() {
         return this.id;
     }
 
     /**
-     * Cambia el identificador del grupo
+     * Cambia el identificador de la labor
      *
-     * @param id Nuevo identificador del grupo
+     * @param id Nuevo identificador de la labor
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Trae el nombre del grupo
+     * Trae el nombre de la labor
      *
-     * @return Nombre del grupo
+     * @return Nombre de la labor
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * Cambia el nombre del grupo
+     * Cambia el nombre de la labor
      *
-     * @param nombre Nuevo nombre del grupo
+     * @param nombre Nuevo nombre de la labor
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Trae si el grupo está o no activo
+     * Trae si el escolaridad está o no activo
      *
-     * @return Si el grupo está o no activo
+     * @return Si el escolaridad está o no activo
      */
     public boolean isActivo() {
-        return this.activo;
+        return activo;
     }
 
     /**
-     * Cambia si el grupo está o no activo
+     * Cambia si el escolaridad está o no activo
      *
-     * @param activo Si el grupo está o no activo
+     * @param activo Si el escolaridad está o no activo
      */
     public void setActivo(boolean activo) {
         this.activo = activo;

@@ -9,31 +9,31 @@ import javax.persistence.Id;
  * @author
  */
 @Entity
-public class Grupo implements Serializable {
+public class Modulo implements Serializable {
 
     //<editor-fold desc="Atributos" defaultstate="collapsed">
     @Id
     /**
-     * Identificador del grupo
+     * Identificador del módulo
      */
     private int id;
 
     /**
-     * Nombre del grupo
+     * Nombre del módulo
      */
     private String nombre;
 
     /**
-     * Si el grupo está o no activo
+     * Si el módulo está o no activo
      */
     private boolean activo;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Contructores">
     /**
-     * Constructor por defecto del grupo
+     * Constructor por defecto del módulo
      */
-    public Grupo() {
+    public Modulo() {
         this.id = 0;
         this.nombre = "";
         this.activo = false;
@@ -42,7 +42,7 @@ public class Grupo implements Serializable {
     /**
      * Constructor
      */
-    public Grupo(int id) {
+    public Modulo(int id) {
         this.id = id;
         this.nombre = "";
         this.activo = false;
@@ -51,54 +51,54 @@ public class Grupo implements Serializable {
 
     //<editor-fold defaultstate="collapsed" desc="Métodos">
     /**
-     * Trae el identificador del grupo
+     * Trae el identificador del módulo
      *
-     * @return Identificador del grupo
+     * @return Identificador del módulo
      */
     public int getId() {
         return this.id;
     }
 
     /**
-     * Cambia el identificador del grupo
+     * Cambia el identificador del módulo
      *
-     * @param id Nuevo identificador del grupo
+     * @param id Nuevo identificador del módulo
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Trae el nombre del grupo
+     * Trae el nombre del módulo
      *
-     * @return Nombre del grupo
+     * @return Nombre del módulo
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * Cambia el nombre del grupo
+     * Cambia el nombre del módulo
      *
-     * @param nombre Nuevo nombre del grupo
+     * @param nombre Nuevo nombre del módulo
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Trae si el grupo está o no activo
+     * Trae si el módulo está o no activo
      *
-     * @return Si el grupo está o no activo
+     * @return Si el módulo está o no activo
      */
     public boolean isActivo() {
-        return this.activo;
+        return activo;
     }
 
     /**
-     * Cambia si el grupo está o no activo
+     * Cambia si el módulo está o no activo
      *
-     * @param activo Si el grupo está o no activo
+     * @param activo Si el módulo está o no activo
      */
     public void setActivo(boolean activo) {
         this.activo = activo;
