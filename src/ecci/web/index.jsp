@@ -1,10 +1,10 @@
-<%-- 
-    Document   : index
-    Created on : Jun 19, 2018, 12:10:38 PM
-    Author     : Omoutperiferia27
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="database.*, java.util.*" %>
+<%
+    Properties dbProperties = new Properties();
+    dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
+    ConexionMySQL conn = new ConexionMySQL(dbProperties);
+    //ArrayList lista;
+%>
 <!DOCTYPE html>
 <html>
     <head>

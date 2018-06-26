@@ -1,18 +1,12 @@
 package entities;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  *
  * @author
  */
-@Entity
-public class Grupo implements Serializable {
+public class Grupo {
 
     //<editor-fold desc="Atributos" defaultstate="collapsed">
-    @Id
     /**
      * Identificador del grupo
      */
@@ -41,6 +35,7 @@ public class Grupo implements Serializable {
 
     /**
      * Constructor
+     * @param id Identificador del grupo
      */
     public Grupo(int id) {
         this.id = id;

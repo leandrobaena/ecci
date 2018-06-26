@@ -1,18 +1,12 @@
 package entities;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  *
  * @author
  */
-@Entity
-public class Usuario implements Serializable {
+public class Usuario {
 
     //<editor-fold desc="Atributos" defaultstate="collapsed">
-    @Id
     /**
      * Identificador del usuario
      */
