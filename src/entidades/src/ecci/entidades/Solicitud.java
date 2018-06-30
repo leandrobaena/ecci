@@ -22,6 +22,11 @@ public class Solicitud {
     private Date date;
 
     /**
+     * Nombre del usuario que hace la solicitud
+     */
+    private String nombre;
+    
+    /**
      * Email de la persona que realiza la solicitud
      */
     private String email;
@@ -44,6 +49,7 @@ public class Solicitud {
     public Solicitud() {
         this.id = 0;
         this.date = new Date();
+        this.nombre = "";
         this.email = "";
         this.escolaridad = new Escolaridad();
         this.labor = new Profesion();
@@ -57,6 +63,7 @@ public class Solicitud {
     public Solicitud(int id) {
         this.id = id;
         this.date = new Date();
+        this.nombre = "";
         this.email = "";
         this.escolaridad = new Escolaridad();
         this.labor = new Profesion();
@@ -98,6 +105,24 @@ public class Solicitud {
      */
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * Trae el nombre del usuario que realiza la solicitud
+     *
+     * @return Nombre del usuario que realiza la solicitud
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Cambia el nombre del usuario que realiza la solicitud
+     *
+     * @param nombre Nuevo nombre del usuario que realiza la solicitud
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
