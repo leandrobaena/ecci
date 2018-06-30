@@ -40,15 +40,73 @@ public class GrupoDAL {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Métodos">
+    /**
+     * Trae el grupo que actualmente se está persistiendo
+     *
+     * @return Grupo que actualmente se está persistiendo
+     */
+    public Grupo getGrupo() {
+        return this.grupo;
+    }
+
+    /**
+     * Cambia el grupo que actualmente se está persistiendo
+     *
+     * @param grupo Nuevo grupo que actualmente se está persistiendo
+     */
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    /**
+     * Trae el litado de grupos desde la base de datos
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Grupo> listar() throws SQLException {
         ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idgrupo, nombre FROM grupo");
         ArrayList<Grupo> lista = new ArrayList<>();
         for (HashMap<String, String> row : table) {
             Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
             g.setNombre(row.get("nombre"));
+            g.setActivo(row.get("activo").equals("1"));
             lista.add(g);
         }
         return lista;
+    }
+
+    /**
+     * Inserta un nuevo grupo en la base de datos
+     *
+     * @throws SQLException
+     */
+    public void insertar() throws SQLException {
+        if (grupo != null) {
+            this.grupo.setId(this.conexion.insert("INSERT INTO grupo (nombre, activo) VALUES ('" + this.grupo.getNombre() + "', " + (this.grupo.isActivo() ? "1" : "0") + ")"));
+        }
+    }
+
+    /**
+     * Actualiza un grupo en la base de datos
+     *
+     * @throws SQLException
+     */
+    public void actualizar() throws SQLException {
+        if (grupo != null) {
+            this.conexion.update("UPDATE grupo SET nombre = '" + this.grupo.getNombre() + "', activo = " + (this.grupo.isActivo() ? "1" : "0") + " WHERE idgrupo = " + this.grupo.getId());
+        }
+    }
+
+    /**
+     * Elimina un grupo en la base de datos
+     *
+     * @throws SQLException
+     */
+    public void eliminar() throws SQLException {
+        if (grupo != null) {
+            this.conexion.update("DELETE FROM grupo WHERE idgrupo = " + this.grupo.getId());
+        }
     }
     //</editor-fold>
 }

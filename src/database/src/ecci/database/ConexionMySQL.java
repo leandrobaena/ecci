@@ -33,6 +33,11 @@ public class ConexionMySQL {
      * Contraseña con que se conecta a la base de datos
      */
     private String password;
+
+    /**
+     * Zona horaria con que se conecta al servidor de base de datos
+     */
+    private String timeZone;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -40,6 +45,8 @@ public class ConexionMySQL {
         this.urlConnection = propiedadesBd.getProperty("url");
         this.user = propiedadesBd.getProperty("user");
         this.password = propiedadesBd.getProperty("password");
+        this.timeZone = propiedadesBd.getProperty("timeZone");
+
     }
     //</editor-fold>
 
@@ -56,6 +63,7 @@ public class ConexionMySQL {
         ds.setURL(this.urlConnection);
         ds.setUser(this.user);
         ds.setPassword(this.password);
+        ds.setServerTimezone(this.timeZone);
 
         ArrayList<HashMap<String, String>> table = new ArrayList<>();
         try (Connection connection = ds.getConnection()) {
@@ -64,12 +72,73 @@ public class ConexionMySQL {
             while (rs.next()) {
                 HashMap<String, String> row = new HashMap<>();
                 for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                    row.put(rs.getMetaData().getColumnName(i), rs.getString(i));
+                    row.put(rs.getMetaData().getColumnName(i + 1), rs.getString(i + 1));
                 }
                 table.add(row);
             }
         }
         return table;
+    }
+
+    /**
+     * Realiza una inserción en la base de datos
+     *
+     * @param sql Sentencia con la instrucción de la inserción
+     * @return Identificador generado por la base de datos
+     * @throws SQLException
+     */
+    public int insert(String sql) throws SQLException {
+        MysqlDataSource ds = new MysqlDataSource();
+        ds.setURL(this.urlConnection);
+        ds.setUser(this.user);
+        ds.setPassword(this.password);
+        ds.setServerTimezone(this.timeZone);
+
+        int id;
+
+        try (Connection connection = ds.getConnection()) {
+            Statement st = connection.createStatement();
+            id = st.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+        }
+        return id;
+    }
+
+    /**
+     * Realiza una acualización en la base de datos
+     *
+     * @param sql Sentencia con la instrucción de la actualización
+     * @throws SQLException
+     */
+    public void update(String sql) throws SQLException {
+        MysqlDataSource ds = new MysqlDataSource();
+        ds.setURL(this.urlConnection);
+        ds.setUser(this.user);
+        ds.setPassword(this.password);
+        ds.setServerTimezone(this.timeZone);
+
+        try (Connection connection = ds.getConnection()) {
+            Statement st = connection.createStatement();
+            st.executeUpdate(sql);
+        }
+    }
+
+    /**
+     * Realiza una eliminación en la base de datos
+     *
+     * @param sql Sentencia con la instrucción de la eliminación
+     * @throws SQLException
+     */
+    public void delete(String sql) throws SQLException {
+        MysqlDataSource ds = new MysqlDataSource();
+        ds.setURL(this.urlConnection);
+        ds.setUser(this.user);
+        ds.setPassword(this.password);
+        ds.setServerTimezone(this.timeZone);
+
+        try (Connection connection = ds.getConnection()) {
+            Statement st = connection.createStatement();
+            st.executeUpdate(sql);
+        }
     }
     //</editor-fold>
 }
