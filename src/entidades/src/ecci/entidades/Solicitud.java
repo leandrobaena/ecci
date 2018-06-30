@@ -34,7 +34,7 @@ public class Solicitud {
     /**
      * Ocupación o profesión de la persona que realiza la solicitud
      */
-    private Labor labor;
+    private Profesion labor;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -46,7 +46,7 @@ public class Solicitud {
         this.date = new Date();
         this.email = "";
         this.escolaridad = new Escolaridad();
-        this.labor = new Labor();
+        this.labor = new Profesion();
     }
 
     /**
@@ -59,7 +59,7 @@ public class Solicitud {
         this.date = new Date();
         this.email = "";
         this.escolaridad = new Escolaridad();
-        this.labor = new Labor();
+        this.labor = new Profesion();
     }
     //</editor-fold>
 
@@ -142,7 +142,7 @@ public class Solicitud {
      *
      * @return Ocupación o profesión del usuario que hace la solicitud
      */
-    public Labor getLabor() {
+    public Profesion getLabor() {
         return labor;
     }
 
@@ -151,7 +151,7 @@ public class Solicitud {
      *
      * @param labor Ocupación o profesión del usuario que hace la solicitud
      */
-    public void setLabor(Labor labor) {
+    public void setLabor(Profesion labor) {
         this.labor = labor;
     }
     //</editor-fold>
