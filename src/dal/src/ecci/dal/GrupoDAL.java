@@ -171,5 +171,59 @@ public class GrupoDAL {
                     + " AND idgrupo = " + this.grupo.getId());
         }
     }
+
+    /**
+     * Trae los usuarios que actualmente tiene el grupo
+     *
+     * @return Usuarios que actualmente tiene el grupo
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Usuario> listarUsuariosActuales() throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        if (grupo != null) {
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idusuario, login, nombres, apellidos, usuarioActivo "
+                    + "FROM vw_usuariogrupo "
+                    + "WHERE idgrupo = " + this.grupo.getId());
+            for (HashMap<String, String> row : table) {
+                Usuario u = new Usuario(Integer.parseInt(row.get("idusuario")));
+                u.setLogin(row.get("login"));
+                u.setNombres(row.get("nombres"));
+                u.setApellidos(row.get("apellidos"));
+                u.setActivo(row.get("usuarioActivo").equals("1"));
+                usuarios.add(u);
+            }
+        }
+        return usuarios;
+    }
+
+    /**
+     * Trae los usuarios que actualmente no tiene el grupo
+     *
+     * @return Usuarios que actualmente no tiene el grupo
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Usuario> listarUsuariosExcluidos() throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        if (grupo != null) {
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idusuario, login, nombres, apellidos, activo "
+                    + "FROM usuario "
+                    + "WHERE idusuario NOT IN ("
+                    + "SELECT idusuario "
+                    + "FROM usuariogrupo "
+                    + "WHERE idgrupo = " + this.grupo.getId()
+                    + ")");
+            for (HashMap<String, String> row : table) {
+                Usuario u = new Usuario(Integer.parseInt(row.get("idusuario")));
+                u.setLogin(row.get("login"));
+                u.setNombres(row.get("nombres"));
+                u.setApellidos(row.get("apellidos"));
+                u.setActivo(row.get("activo").equals("1"));
+                usuarios.add(u);
+            }
+        }
+        return usuarios;
+    }
     //</editor-fold>
 }

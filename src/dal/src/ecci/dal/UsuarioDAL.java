@@ -201,6 +201,7 @@ public class UsuarioDAL {
      * Trae los grupos en los que actualmente se encuentra el usuario
      *
      * @return Grupos en los que actualmente se encuentra el usuario
+     * @throws java.sql.SQLException
      */
     public ArrayList<Grupo> listarGruposActuales() throws SQLException {
         ArrayList<Grupo> grupos = new ArrayList<>();
@@ -213,6 +214,33 @@ public class UsuarioDAL {
                 Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
                 g.setNombre(row.get("nombre"));
                 g.setActivo(row.get("grupoActivo").equals("1"));
+                grupos.add(g);
+            }
+        }
+        return grupos;
+    }
+
+    /**
+     * Trae los grupos en los que actualmente no se encuentra el usuario
+     *
+     * @return Grupos en los que actualmente no se encuentra el usuario
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Grupo> listarGruposExcluidos() throws SQLException {
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        if (usuario != null) {
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idgrupo, nombre, activo "
+                    + "FROM grupo "
+                    + "WHERE idgrupo NOT IN ("
+                    + "SELECT idgrupo "
+                    + "FROM usuariogrupo "
+                    + "WHERE idusuario = " + this.usuario.getId()
+                    + ")");
+            for (HashMap<String, String> row : table) {
+                Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
+                g.setNombre(row.get("nombre"));
+                g.setActivo(row.get("activo").equals("1"));
                 grupos.add(g);
             }
         }
