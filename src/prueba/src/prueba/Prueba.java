@@ -1,7 +1,8 @@
 package prueba;
 
-import ecci.dal.GrupoDAL;
+import ecci.dal.UsuarioDAL;
 import ecci.entidades.Grupo;
+import ecci.entidades.Usuario;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,15 +19,15 @@ public class Prueba {
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Properties p = new Properties();
         p.load(new FileReader("database.properties"));
-        GrupoDAL gDal = new GrupoDAL(p);
+ 
+        UsuarioDAL uDal = new UsuarioDAL(p);
         
-        /*ArrayList<Grupo> grupos = gDal.listar();
+        Usuario u = new Usuario(1);
+        uDal.setUsuario(u);
+        
+        ArrayList<Grupo> grupos = uDal.listarGruposActuales();
         for (Grupo grupo : grupos) {
-            System.out.println(grupo.getNombre());
+            System.err.println(grupo.getNombre());
         }
-        */
-        Grupo g = new Grupo(2);
-        gDal.setGrupo(g);
-        gDal.eliminar();
     }
 }

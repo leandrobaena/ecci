@@ -28,11 +28,6 @@ public class Usuario {
     private String apellidos;
 
     /**
-     * Contraseña de acceso del usuario
-     */
-    private String contrasenia;
-
-    /**
      * Si el usuario está o no activo
      */
     private boolean activo;
@@ -47,7 +42,6 @@ public class Usuario {
         this.login = "";
         this.nombres = "";
         this.apellidos = "";
-        this.contrasenia = "";
         this.activo = false;
     }
 
@@ -59,7 +53,6 @@ public class Usuario {
         this.login = "";
         this.nombres = "";
         this.apellidos = "";
-        this.contrasenia = "";
         this.activo = false;
     }
     //</editor-fold>
@@ -135,24 +128,6 @@ public class Usuario {
      */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    /**
-     * Trae la contraseña del usuario
-     *
-     * @return Contraseña del usuario
-     */
-    public String getContrasenia() {
-        return this.contrasenia;
-    }
-
-    /**
-     * Cambia la contrasenia del usuario
-     *
-     * @param contrasenia Nueva contrasenia del usuario
-     */
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
     }
 
     /**

@@ -94,11 +94,15 @@ public class ConexionMySQL {
         ds.setPassword(this.password);
         ds.setServerTimezone(this.timeZone);
 
-        int id;
+        int id = 0;
 
         try (Connection connection = ds.getConnection()) {
             Statement st = connection.createStatement();
-            id = st.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            st.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = st.getGeneratedKeys();
+            if (rs != null && rs.next()) {
+                id = rs.getInt(1);
+            }
         }
         return id;
     }

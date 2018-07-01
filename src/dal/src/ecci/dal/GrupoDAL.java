@@ -2,6 +2,7 @@ package ecci.dal;
 
 import ecci.entidades.Grupo;
 import ecci.database.ConexionMySQL;
+import ecci.entidades.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -59,9 +60,9 @@ public class GrupoDAL {
     }
 
     /**
-     * Trae el litado de grupos desde la base de datos
+     * Trae el listado de grupos desde la base de datos
      *
-     * @return
+     * @return Listado de grupos desde la base de datos
      * @throws SQLException
      */
     public ArrayList<Grupo> listar() throws SQLException {
@@ -88,6 +89,21 @@ public class GrupoDAL {
     }
 
     /**
+     * Carga un grupo desde la base de datos
+     *
+     * @throws SQLException
+     */
+    public void cargar() throws SQLException {
+        ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idgrupo, nombre FROM grupo");
+        for (HashMap<String, String> row : table) {
+            Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
+            g.setNombre(row.get("nombre"));
+            g.setActivo(row.get("activo").equals("1"));
+            this.grupo = g;
+        }
+    }
+
+    /**
      * Actualiza un grupo en la base de datos
      *
      * @throws SQLException
@@ -106,6 +122,34 @@ public class GrupoDAL {
     public void eliminar() throws SQLException {
         if (grupo != null) {
             this.conexion.update("DELETE FROM grupo WHERE idgrupo = " + this.grupo.getId());
+        }
+    }
+
+    /**
+     * Inserta un usuario en un grupo en la base de datos
+     *
+     * @param usuario Usuario que se desea insertar al grupo
+     * @throws SQLException
+     */
+    public void insertarUsuarioEnGrupo(Usuario usuario) throws SQLException {
+        if (grupo != null) {
+            this.conexion.insert(
+                    "INSERT INTO usuariogrupo "
+                    + "(idusuario, idgrupo) "
+                    + "VALUES "
+                    + "(" + usuario.getId() + ", " + this.grupo.getId() + ")");
+        }
+    }
+
+    /**
+     * Elimina un usuario de un grupo en la base de datos
+     *
+     * @param usuario Usuario que se desea eliminar del grupo
+     * @throws SQLException
+     */
+    public void eliminarUsuarioEnGrupo(Grupo usuario) throws SQLException {
+        if (grupo != null) {
+            this.conexion.delete("DELETE FROM usuariogrupo WHERE idusuario = " + usuario.getId() + " AND idgrupo = " + this.grupo.getId());
         }
     }
     //</editor-fold>
