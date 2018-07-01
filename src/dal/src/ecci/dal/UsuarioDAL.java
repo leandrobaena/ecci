@@ -66,7 +66,9 @@ public class UsuarioDAL {
      * @throws SQLException
      */
     public ArrayList<Usuario> listar() throws SQLException {
-        ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idusuario, login, nombres, apellidos, activo FROM usuario");
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT idusuario, login, nombres, apellidos, activo "
+                + "FROM usuario");
         ArrayList<Usuario> lista = new ArrayList<>();
         for (HashMap<String, String> row : table) {
             Usuario u = new Usuario(Integer.parseInt(row.get("idusuario")));
@@ -106,7 +108,10 @@ public class UsuarioDAL {
      * @throws SQLException
      */
     public void cargar() throws SQLException {
-        ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idusuario, login, nombres, apellidos, activo FROM usuario");
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT idusuario, login, nombres, apellidos, activo "
+                + "FROM usuario "
+                + "WHERE idusuario = " + this.usuario.getId());
         for (HashMap<String, String> row : table) {
             Usuario u = new Usuario(Integer.parseInt(row.get("idusuario")));
             u.setLogin(row.get("login"));
@@ -154,7 +159,10 @@ public class UsuarioDAL {
      */
     public void eliminar() throws SQLException {
         if (usuario != null) {
-            this.conexion.update("DELETE FROM usuario WHERE idusuario = " + this.usuario.getId());
+            this.conexion.update(
+                    "DELETE "
+                    + "FROM usuario "
+                    + "WHERE idusuario = " + this.usuario.getId());
         }
     }
 
@@ -182,7 +190,10 @@ public class UsuarioDAL {
      */
     public void eliminarUsuarioEnGrupo(Grupo grupo) throws SQLException {
         if (usuario != null) {
-            this.conexion.delete("DELETE FROM usuariogrupo WHERE idusuario = " + this.usuario.getId() + " AND idgrupo = " + grupo.getId());
+            this.conexion.delete("DELETE "
+                    + "FROM usuariogrupo "
+                    + "WHERE idusuario = " + this.usuario.getId()
+                    + " AND idgrupo = " + grupo.getId());
         }
     }
 
@@ -194,7 +205,10 @@ public class UsuarioDAL {
     public ArrayList<Grupo> listarGruposActuales() throws SQLException {
         ArrayList<Grupo> grupos = new ArrayList<>();
         if (usuario != null) {
-            ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idgrupo, nombre, grupoActivo FROM vw_usuariogrupo WHERE idusuario = " + this.usuario.getId());
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idgrupo, nombre, grupoActivo "
+                    + "FROM vw_usuariogrupo "
+                    + "WHERE idusuario = " + this.usuario.getId());
             for (HashMap<String, String> row : table) {
                 Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
                 g.setNombre(row.get("nombre"));

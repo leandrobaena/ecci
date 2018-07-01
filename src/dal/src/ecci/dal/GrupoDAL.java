@@ -66,7 +66,9 @@ public class GrupoDAL {
      * @throws SQLException
      */
     public ArrayList<Grupo> listar() throws SQLException {
-        ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idgrupo, nombre FROM grupo");
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT idgrupo, nombre "
+                + "FROM grupo");
         ArrayList<Grupo> lista = new ArrayList<>();
         for (HashMap<String, String> row : table) {
             Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
@@ -84,7 +86,12 @@ public class GrupoDAL {
      */
     public void insertar() throws SQLException {
         if (grupo != null) {
-            this.grupo.setId(this.conexion.insert("INSERT INTO grupo (nombre, activo) VALUES ('" + this.grupo.getNombre() + "', " + (this.grupo.isActivo() ? "1" : "0") + ")"));
+            this.grupo.setId(this.conexion.insert(
+                    "INSERT INTO grupo "
+                    + "(nombre, activo) "
+                    + "VALUES "
+                    + "('" + this.grupo.getNombre() + "', "
+                    + (this.grupo.isActivo() ? "1" : "0") + ")"));
         }
     }
 
@@ -94,7 +101,10 @@ public class GrupoDAL {
      * @throws SQLException
      */
     public void cargar() throws SQLException {
-        ArrayList<HashMap<String, String>> table = this.conexion.select("SELECT idgrupo, nombre FROM grupo");
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT idgrupo, nombre "
+                + "FROM grupo "
+                + "WHERE idgrupo = " + this.grupo.getId());
         for (HashMap<String, String> row : table) {
             Grupo g = new Grupo(Integer.parseInt(row.get("idgrupo")));
             g.setNombre(row.get("nombre"));
@@ -110,7 +120,11 @@ public class GrupoDAL {
      */
     public void actualizar() throws SQLException {
         if (grupo != null) {
-            this.conexion.update("UPDATE grupo SET nombre = '" + this.grupo.getNombre() + "', activo = " + (this.grupo.isActivo() ? "1" : "0") + " WHERE idgrupo = " + this.grupo.getId());
+            this.conexion.update(
+                    "UPDATE grupo SET "
+                    + "nombre = '" + this.grupo.getNombre() + "', "
+                    + "activo = " + (this.grupo.isActivo() ? "1" : "0")
+                    + " WHERE idgrupo = " + this.grupo.getId());
         }
     }
 
@@ -121,7 +135,9 @@ public class GrupoDAL {
      */
     public void eliminar() throws SQLException {
         if (grupo != null) {
-            this.conexion.update("DELETE FROM grupo WHERE idgrupo = " + this.grupo.getId());
+            this.conexion.update(
+                    "DELETE FROM grupo "
+                    + "WHERE idgrupo = " + this.grupo.getId());
         }
     }
 
@@ -149,7 +165,10 @@ public class GrupoDAL {
      */
     public void eliminarUsuarioEnGrupo(Grupo usuario) throws SQLException {
         if (grupo != null) {
-            this.conexion.delete("DELETE FROM usuariogrupo WHERE idusuario = " + usuario.getId() + " AND idgrupo = " + this.grupo.getId());
+            this.conexion.delete(
+                    "DELETE FROM usuariogrupo "
+                    + "WHERE idusuario = " + usuario.getId()
+                    + " AND idgrupo = " + this.grupo.getId());
         }
     }
     //</editor-fold>
