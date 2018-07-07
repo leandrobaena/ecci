@@ -19,7 +19,7 @@ public class Solicitud {
     /**
      * Fecha de la búsqueda
      */
-    private Date date;
+    private Date fecha;
 
     /**
      * Nombre del usuario que hace la solicitud
@@ -39,7 +39,7 @@ public class Solicitud {
     /**
      * Ocupación o profesión de la persona que realiza la solicitud
      */
-    private Profesion labor;
+    private Profesion profesion;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructores">
@@ -48,11 +48,11 @@ public class Solicitud {
      */
     public Solicitud() {
         this.id = 0;
-        this.date = new Date();
+        this.fecha = new Date();
         this.nombre = "";
         this.email = "";
         this.escolaridad = new Escolaridad();
-        this.labor = new Profesion();
+        this.profesion = new Profesion();
     }
 
     /**
@@ -62,11 +62,11 @@ public class Solicitud {
      */
     public Solicitud(int id) {
         this.id = id;
-        this.date = new Date();
+        this.fecha = new Date();
         this.nombre = "";
         this.email = "";
         this.escolaridad = new Escolaridad();
-        this.labor = new Profesion();
+        this.profesion = new Profesion();
     }
     //</editor-fold>
 
@@ -94,17 +94,17 @@ public class Solicitud {
      *
      * @return Fecha de la solicitud
      */
-    public Date getDate() {
-        return date;
+    public Date getFecha() {
+        return fecha;
     }
 
     /**
      * Cambia la fecha de la solicitud
      *
-     * @param date Nueva fecha de la solicitud
+     * @param fecha Nueva fecha de la solicitud
      */
-    public void setDate(Date date) {
-        this.date = date;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     /**
@@ -167,17 +167,17 @@ public class Solicitud {
      *
      * @return Ocupación o profesión del usuario que hace la solicitud
      */
-    public Profesion getLabor() {
-        return labor;
+    public Profesion getProfesion() {
+        return profesion;
     }
 
     /**
      * Cambia la ocupación o profesión del usuario que hace la solicitud
      *
-     * @param labor Ocupación o profesión del usuario que hace la solicitud
+     * @param profesion Ocupación o profesión del usuario que hace la solicitud
      */
-    public void setLabor(Profesion labor) {
-        this.labor = labor;
+    public void setProfesion(Profesion profesion) {
+        this.profesion = profesion;
     }
     //</editor-fold>
 }
