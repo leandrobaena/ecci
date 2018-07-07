@@ -67,7 +67,7 @@ public class GrupoDAL {
      */
     public ArrayList<Grupo> listar() throws SQLException {
         ArrayList<HashMap<String, String>> table = this.conexion.select(
-                "SELECT idgrupo, nombre "
+                "SELECT idgrupo, nombre, activo "
                 + "FROM grupo");
         ArrayList<Grupo> lista = new ArrayList<>();
         for (HashMap<String, String> row : table) {
@@ -102,7 +102,7 @@ public class GrupoDAL {
      */
     public void cargar() throws SQLException {
         ArrayList<HashMap<String, String>> table = this.conexion.select(
-                "SELECT idgrupo, nombre "
+                "SELECT idgrupo, nombre, activo "
                 + "FROM grupo "
                 + "WHERE idgrupo = " + this.grupo.getId());
         for (HashMap<String, String> row : table) {
