@@ -2,6 +2,7 @@ package ecci.dal;
 
 import ecci.entidades.Etiqueta;
 import ecci.database.ConexionMySQL;
+import ecci.entidades.Necesidad;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -135,6 +136,87 @@ public class EtiquetaDAL {
                     "DELETE FROM etiqueta "
                     + "WHERE idetiqueta = " + this.etiqueta.getId());
         }
+    }
+
+    /**
+     * Asocia un necesidad a una etiqueta en la base de datos
+     *
+     * @param necesidad Necesidad que se desea asociar a la etiqueta
+     * @throws SQLException
+     */
+    public void insertarNecesidadEnEtiqueta(Necesidad necesidad) throws SQLException {
+        if (etiqueta != null) {
+            this.conexion.insert(
+                    "INSERT INTO etiquetanecesidad "
+                    + "(idnecesidad, idetiqueta) "
+                    + "VALUES "
+                    + "(" + necesidad.getId() + ", " + this.etiqueta.getId() + ")");
+        }
+    }
+
+    /**
+     * Desvincula una necesidad de una etiqueta en la base de datos
+     *
+     * @param necesidad Necesidad que se desea desvincular de la etiqueta
+     * @throws SQLException
+     */
+    public void eliminarNecesidadEnEtiqueta(Necesidad necesidad) throws SQLException {
+        if (etiqueta != null) {
+            this.conexion.delete(
+                    "DELETE FROM etiquetanecesidad "
+                    + "WHERE idnecesidad = " + necesidad.getId()
+                    + " AND idetiqueta = " + this.etiqueta.getId());
+        }
+    }
+
+    /**
+     * Trae las necesidades que actualmente están asociadas a la etiqueta
+     *
+     * @return Necesidades que actualmente están asociadas a la etiqueta
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Necesidad> listarNecesidadesActuales() throws SQLException {
+        ArrayList<Necesidad> necesidades = new ArrayList<>();
+        if (etiqueta != null) {
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idnecesidad, codigo, descripcion "
+                    + "FROM vw_etiquetanecesidad "
+                    + "WHERE idetiqueta = " + this.etiqueta.getId());
+            for (HashMap<String, String> row : table) {
+                Necesidad n = new Necesidad(Integer.parseInt(row.get("idnecesidad")));
+                n.setCodigo(row.get("codigo"));
+                n.setDescripcion(row.get("descripcion"));
+                necesidades.add(n);
+            }
+        }
+        return necesidades;
+    }
+
+    /**
+     * Trae las necesidades que actualmente no están asociadas a la etiqueta
+     *
+     * @return Necesidades que actualmente no están asociadas a la etiqueta
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Necesidad> listarNecesidadesExcluidas() throws SQLException {
+        ArrayList<Necesidad> necesidades = new ArrayList<>();
+        if (etiqueta != null) {
+            ArrayList<HashMap<String, String>> table = this.conexion.select(
+                    "SELECT idnecesidad, codigo, descripcion "
+                    + "FROM necesidad "
+                    + "WHERE idnecesidad NOT IN ("
+                    + "SELECT idnecesidad "
+                    + "FROM etiquetanecesidad "
+                    + "WHERE idetiqueta = " + this.etiqueta.getId()
+                    + ")");
+            for (HashMap<String, String> row : table) {
+                Necesidad n = new Necesidad(Integer.parseInt(row.get("idnecesidad")));
+                n.setCodigo(row.get("codigo"));
+                n.setDescripcion(row.get("descripcion"));
+                necesidades.add(n);
+            }
+        }
+        return necesidades;
     }
     //</editor-fold>
 }
