@@ -20,17 +20,17 @@ public class NivelAccesoBL {
     private NivelAcceso nivelAcceso;
 
     /**
-     * Admiistrador de la persistencia
+     * Administrador de la persistencia
      */
     private NivelAccesoDAL nivelAccesoDAL;
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Contructores">
+    //<editor-fold defaultstate="collapsed" desc="Constructores">
     /**
      * Crea un nuevo nivel de acceso con su administrador de persistencia
      *
-     * @param id
-     * @param propiedadesBD
+     * @param id Identificador del nivel de acceso
+     * @param propiedadesBD Propiedades de conexión a la base de datos
      * @throws IOException
      */
     public NivelAccesoBL(int id, Properties propiedadesBD) throws IOException {
