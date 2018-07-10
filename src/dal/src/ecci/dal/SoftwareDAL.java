@@ -12,7 +12,7 @@ import java.util.Properties;
  *
  * @author
  */
-public class SofwareDAL {
+public class SoftwareDAL {
 
     //<editor-fold defaultstate="collapsed" desc="Atributos">
     /**
@@ -35,7 +35,7 @@ public class SofwareDAL {
      * @throws IOException Si no encuentra el archivo de configuración de la
      * base de datos
      */
-    public SofwareDAL(Properties propiedadesBd) throws IOException {
+    public SoftwareDAL(Properties propiedadesBd) throws IOException {
         this.conexion = new ConexionMySQL(propiedadesBd);
     }
     //</editor-fold>
