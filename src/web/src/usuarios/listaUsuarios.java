@@ -42,15 +42,22 @@ public class listaUsuarios extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("{");
             out.println("\"usuarios\":");
-            out.println("{");
+            out.println("[");
+            int i = 0;
             for (Usuario usuario : usuarios) {
-                out.println("\"id\": " + usuario.getId());
-                out.println("\"login\": " + usuario.getLogin());
-                out.println("\"nombres\": " + usuario.getNombres());
-                out.println("\"apellidos\": " + usuario.getApellidos());
+                if (i != 0) {
+                    out.println(",");
+                    i++;
+                }
+                out.println("{");
+                out.println("\"id\": " + usuario.getId() + ",");
+                out.println("\"login\": \"" + usuario.getLogin() + "\",");
+                out.println("\"nombres\": \"" + usuario.getNombres() + "\",");
+                out.println("\"apellidos\": \"" + usuario.getApellidos() + "\",");
                 out.println("\"activo\": " + (usuario.isActivo() ? "true" : "false"));
+                out.println("}");
             }
-            out.println("}");
+            out.println("]");
             out.println("}");
         }
     }

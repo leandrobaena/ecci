@@ -5,7 +5,7 @@ Ext.define('ecci.store.Usuarios', {
     autoLoad: true,
     proxy: {
         type: 'ajax',
-        url: './servlets/usuarios/lista',
+        url: '../usuarios/lista',
         reader: {
             type: 'json',
             rootProperty: 'usuarios'
