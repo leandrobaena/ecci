@@ -8,7 +8,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.usuarios.Lista',
         'ecci.view.grupos.Lista',
         'ecci.view.nivelesAcceso.Lista',
-        'ecci.view.modulos.Lista'
+        'ecci.view.modulos.Lista',
+        'ecci.view.escolaridades.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -63,7 +64,8 @@ Ext.define('ecci.view.main.Main', {
             xtype: 'listaModulos'
         }, {
             title: 'Escolaridades',
-            iconCls: 'fa-graduation-cap'
+            iconCls: 'fa-graduation-cap',
+            xtype: 'listaEscolaridades'
         }, {
             title: 'Profesiones',
             iconCls: 'fa-briefcase'

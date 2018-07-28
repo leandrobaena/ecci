@@ -1,119 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <!-- Usuarios -->
     <servlet>
         <description>Listado de usuarios</description>
         <servlet-name>listaUsuarios</servlet-name>
         <servlet-class>usuarios.lista</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>listaUsuarios</servlet-name>
+        <url-pattern>/usuarios/lista</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <description>Inserta o actualiza un usuario</description>
         <servlet-name>guardarUsuario</servlet-name>
         <servlet-class>usuarios.guardar</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarUsuario</servlet-name>
+        <url-pattern>/usuarios/guardar</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <description>Elimina un usuario de la base de datos</description>
         <servlet-name>eliminarUsuario</servlet-name>
         <servlet-class>usuarios.eliminar</servlet-class>
     </servlet>
-    
-    <servlet>
-        <description>Listado de grupos</description>
-        <servlet-name>listaGrupos</servlet-name>
-        <servlet-class>grupos.lista</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Guarda un grupo</description>
-        <servlet-name>guardarGrupo</servlet-name>
-        <servlet-class>grupos.guardar</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Elimina un grupo</description>
-        <servlet-name>eliminarGrupo</servlet-name>
-        <servlet-class>grupos.eliminar</servlet-class>
-    </servlet>
-    
-    <servlet>
-        <description>Listado de niveles de acceso</description>
-        <servlet-name>listaNivelesAcceso</servlet-name>
-        <servlet-class>nivelesAcceso.lista</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Guarda un nivel de acceso</description>
-        <servlet-name>guardarNivelAcceso</servlet-name>
-        <servlet-class>nivelesAcceso.guardar</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Elimina un nivel de acceso</description>
-        <servlet-name>eliminarNivelAcceso</servlet-name>
-        <servlet-class>nivelesAcceso.eliminar</servlet-class>
-    </servlet>
-    
-    <servlet>
-        <description>Listado de modulos</description>
-        <servlet-name>listaModulos</servlet-name>
-        <servlet-class>modulos.lista</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Inserta o actualiza un modulo</description>
-        <servlet-name>guardarModulo</servlet-name>
-        <servlet-class>modulos.guardar</servlet-class>
-    </servlet>
-    <servlet>
-        <description>Elimina un modulo de la base de datos</description>
-        <servlet-name>eliminarModulo</servlet-name>
-        <servlet-class>modulos.eliminar</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>listaUsuarios</servlet-name>
-        <url-pattern>/usuarios/lista</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>guardarUsuario</servlet-name>
-        <url-pattern>/usuarios/guardar</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliminarUsuario</servlet-name>
         <url-pattern>/usuarios/eliminar</url-pattern>
     </servlet-mapping>
     
+    <!-- Grupos -->
+    <servlet>
+        <description>Listado de grupos</description>
+        <servlet-name>listaGrupos</servlet-name>
+        <servlet-class>grupos.lista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaGrupos</servlet-name>
         <url-pattern>/grupos/lista</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Guarda un grupo</description>
+        <servlet-name>guardarGrupo</servlet-name>
+        <servlet-class>grupos.guardar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarGrupo</servlet-name>
         <url-pattern>/grupos/guardar</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Elimina un grupo</description>
+        <servlet-name>eliminarGrupo</servlet-name>
+        <servlet-class>grupos.eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>eliminarGrupo</servlet-name>
         <url-pattern>/grupos/eliminar</url-pattern>
     </servlet-mapping>
-
+    
+    <!-- Niveles de acceso -->
+    <servlet>
+        <description>Listado de niveles de acceso</description>
+        <servlet-name>listaNivelesAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.lista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaNivelesAcceso</servlet-name>
         <url-pattern>/nivelesAcceso/lista</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Guarda un nivel de acceso</description>
+        <servlet-name>guardarNivelAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.guardar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarNivelAcceso</servlet-name>
         <url-pattern>/nivelesAcceso/guardar</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Elimina un nivel de acceso</description>
+        <servlet-name>eliminarNivelAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>eliminarNivelAcceso</servlet-name>
         <url-pattern>/nivelesAcceso/eliminar</url-pattern>
     </servlet-mapping>
-        
+    
+    <!-- Módulos -->
+    <servlet>
+        <description>Listado de modulos</description>
+        <servlet-name>listaModulos</servlet-name>
+        <servlet-class>modulos.lista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listaModulos</servlet-name>
         <url-pattern>/modulos/lista</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <description>Inserta o actualiza un modulo</description>
+        <servlet-name>guardarModulo</servlet-name>
+        <servlet-class>modulos.guardar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>guardarModulo</servlet-name>
         <url-pattern>/modulos/guardar</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Elimina un modulo de la base de datos</description>
+        <servlet-name>eliminarModulo</servlet-name>
+        <servlet-class>modulos.eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>eliminarModulo</servlet-name>
         <url-pattern>/modulos/eliminar</url-pattern>
+    </servlet-mapping>
+
+    <!-- Escolaridades -->
+    <servlet>
+        <description>Listado de escolaridades</description>
+        <servlet-name>listaEscolaridades</servlet-name>
+        <servlet-class>escolaridades.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaEscolaridades</servlet-name>
+        <url-pattern>/escolaridades/lista</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Inserta o actualiza una escolaridad</description>
+        <servlet-name>guardarEscolaridad</servlet-name>
+        <servlet-class>escolaridades.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarEscolaridad</servlet-name>
+        <url-pattern>/escolaridades/guardar</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Elimina una escolaridad de la base de datos</description>
+        <servlet-name>eliminarEscolaridad</servlet-name>
+        <servlet-class>escolaridades.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarEscolaridad</servlet-name>
+        <url-pattern>/escolaridades/eliminar</url-pattern>
     </servlet-mapping>
 
     <session-config>
