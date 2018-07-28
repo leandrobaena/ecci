@@ -7,7 +7,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.main.MainController',
         'ecci.view.usuarios.Lista',
         'ecci.view.grupos.Lista',
-        'ecci.view.nivelesAcceso.Lista'
+        'ecci.view.nivelesAcceso.Lista',
+        'ecci.view.modulos.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -58,7 +59,8 @@ Ext.define('ecci.view.main.Main', {
             xtype: 'listaNivelesAcceso'
         }, {
             title: 'M&oacute;dulos',
-            iconCls: 'fa-bars'
+            iconCls: 'fa-bars',
+            xtype: 'listaModulos'
         }, {
             title: 'Escolaridades',
             iconCls: 'fa-graduation-cap'

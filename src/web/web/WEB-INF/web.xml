@@ -48,6 +48,22 @@
         <servlet-class>nivelesAcceso.eliminar</servlet-class>
     </servlet>
     
+    <servlet>
+        <description>Listado de modulos</description>
+        <servlet-name>listaModulos</servlet-name>
+        <servlet-class>modulos.lista</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Inserta o actualiza un modulo</description>
+        <servlet-name>guardarModulo</servlet-name>
+        <servlet-class>modulos.guardar</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Elimina un modulo de la base de datos</description>
+        <servlet-name>eliminarModulo</servlet-name>
+        <servlet-class>modulos.eliminar</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>listaUsuarios</servlet-name>
         <url-pattern>/usuarios/lista</url-pattern>
@@ -87,6 +103,19 @@
         <url-pattern>/nivelesAcceso/eliminar</url-pattern>
     </servlet-mapping>
         
+    <servlet-mapping>
+        <servlet-name>listaModulos</servlet-name>
+        <url-pattern>/modulos/lista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>guardarModulo</servlet-name>
+        <url-pattern>/modulos/guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarModulo</servlet-name>
+        <url-pattern>/modulos/eliminar</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
