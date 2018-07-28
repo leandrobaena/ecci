@@ -1,6 +1,6 @@
-package usuarios;
+package grupos;
 
-import ecci.bl.UsuarioBL;
+import ecci.bl.GrupoBL;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Guarda un usuario en la base de datos
+ * Elimina un grupo en la base de datos
  *
  * @author
  */
-public class guardar extends HttpServlet {
+public class eliminar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +34,13 @@ public class guardar extends HttpServlet {
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
 
-        UsuarioBL usuario = new UsuarioBL(Integer.parseInt(request.getParameter("id")), dbProperties);
+        GrupoBL grupo = new GrupoBL(Integer.parseInt(request.getParameter("id")), dbProperties);
 
-        usuario.setLogin(request.getParameter("login"));
-        usuario.setNombres(request.getParameter("nombres"));
-        usuario.setApellidos(request.getParameter("apellidos"));
-        usuario.setActivo(Boolean.parseBoolean(request.getParameter("activo")));
         PrintWriter out = response.getWriter();
         try {
             String msg;
-            if (usuario.getId() == 0) {//Insertar
-                usuario.insertar(request.getParameter("login"));
-                msg = "Usuario insertado con éxito";
-            } else { //Actualizar
-                usuario.actualizar();
-                msg = "Usuario actualizado con éxito";
-            }
+            grupo.eliminar();
+            msg = "Grupo eliminado con éxito";
             out.println("{\"success\":true,\"msg\":\"" + msg + "\"}");
         } catch (Exception ex) {
             out.println("{\"success\":false,\"msg\":\"" + ex.getMessage() + "\"}");
@@ -71,7 +62,7 @@ public class guardar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(guardar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +80,7 @@ public class guardar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(guardar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +91,7 @@ public class guardar extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Guarda un usuario";
+        return "Elimina un usuario";
     }// </editor-fold>
 
 }

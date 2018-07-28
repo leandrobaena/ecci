@@ -3,11 +3,56 @@
     <servlet>
         <description>Listado de usuarios</description>
         <servlet-name>listaUsuarios</servlet-name>
-        <servlet-class>usuarios.listaUsuarios</servlet-class>
+        <servlet-class>usuarios.lista</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Inserta o actualiza un usuario</description>
+        <servlet-name>guardarUsuario</servlet-name>
+        <servlet-class>usuarios.guardar</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Elimina un usuario de la base de datos</description>
+        <servlet-name>eliminarUsuario</servlet-name>
+        <servlet-class>usuarios.eliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Listado de grupos</description>
+        <servlet-name>listaGrupos</servlet-name>
+        <servlet-class>grupos.lista</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Guarda un grupo</description>
+        <servlet-name>guardarGrupo</servlet-name>
+        <servlet-class>grupos.guardar</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Elimina un grupo</description>
+        <servlet-name>eliminarGrupo</servlet-name>
+        <servlet-class>grupos.eliminar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>listaUsuarios</servlet-name>
         <url-pattern>/usuarios/lista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>guardarUsuario</servlet-name>
+        <url-pattern>/usuarios/guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarUsuario</servlet-name>
+        <url-pattern>/usuarios/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listaGrupos</servlet-name>
+        <url-pattern>/grupos/lista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>guardarGrupo</servlet-name>
+        <url-pattern>/grupos/guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarGrupo</servlet-name>
+        <url-pattern>/grupos/eliminar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

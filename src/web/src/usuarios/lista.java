@@ -1,9 +1,11 @@
 package usuarios;
 
 import ecci.bl.UsuarioBL;
+import ecci.entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Guarda un usuario en la base de datos
+ * Trae la lista de usuarios
  *
  * @author
  */
-public class guardar extends HttpServlet {
+public class lista extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,32 +29,36 @@ public class guardar extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("application/json;charset=UTF-8");
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-
-        UsuarioBL usuario = new UsuarioBL(Integer.parseInt(request.getParameter("id")), dbProperties);
-
-        usuario.setLogin(request.getParameter("login"));
-        usuario.setNombres(request.getParameter("nombres"));
-        usuario.setApellidos(request.getParameter("apellidos"));
-        usuario.setActivo(Boolean.parseBoolean(request.getParameter("activo")));
-        PrintWriter out = response.getWriter();
-        try {
-            String msg;
-            if (usuario.getId() == 0) {//Insertar
-                usuario.insertar(request.getParameter("login"));
-                msg = "Usuario insertado con éxito";
-            } else { //Actualizar
-                usuario.actualizar();
-                msg = "Usuario actualizado con éxito";
+        UsuarioBL usuarioMgr = new UsuarioBL(0, dbProperties);
+        ArrayList<Usuario> usuarios = usuarioMgr.listar();
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("{");
+            out.println("\"usuarios\":");
+            out.println("[");
+            int i = 0;
+            for (Usuario usuario : usuarios) {
+                if (i != 0) {
+                    out.println(",");
+                }
+                out.println("{");
+                out.println("\"id\": " + usuario.getId() + ",");
+                out.println("\"login\": \"" + usuario.getLogin() + "\",");
+                out.println("\"nombres\": \"" + usuario.getNombres() + "\",");
+                out.println("\"apellidos\": \"" + usuario.getApellidos() + "\",");
+                out.println("\"activo\": " + (usuario.isActivo() ? "true" : "false"));
+                out.println("}");
+                i++;
             }
-            out.println("{\"success\":true,\"msg\":\"" + msg + "\"}");
-        } catch (Exception ex) {
-            out.println("{\"success\":false,\"msg\":\"" + ex.getMessage() + "\"}");
+            out.println("]");
+            out.println("}");
         }
     }
 
@@ -71,7 +77,7 @@ public class guardar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(guardar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(lista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +95,7 @@ public class guardar extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(guardar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(lista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +106,7 @@ public class guardar extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Guarda un usuario";
+        return "Listado de usuarios de la aplicación";
     }// </editor-fold>
 
 }

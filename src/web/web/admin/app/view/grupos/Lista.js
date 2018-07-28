@@ -1,20 +1,18 @@
-Ext.define('ecci.view.usuarios.Lista', {
+Ext.define('ecci.view.grupos.Lista', {
     extend: 'Ext.grid.Panel',
-    xtype: 'listaUsuarios',
+    xtype: 'listaGrupos',
     requires: [
-        'ecci.store.Usuarios',
-        'ecci.view.usuarios.UsuariosController'
+        'ecci.store.Grupos',
+        'ecci.view.grupos.GruposController'
     ],
-    controller: 'usuarios',
-    title: 'Usuarios',
+    controller: 'grupos',
+    title: 'Grupos',
     store: {
-        type: 'usuarios'
+        type: 'grupos'
     },
     columns: [
         {text: 'Id', dataIndex: 'id'},
-        {text: 'Login', dataIndex: 'login', flex: 1},
-        {text: 'Nombres', dataIndex: 'nombres', flex: 1},
-        {text: 'Apellidos', dataIndex: 'apellidos', flex: 1},
+        {text: 'Nombre', dataIndex: 'nombre', flex: 1},
         {text: 'Activo', dataIndex: 'activo', flex: 1, renderer: function (value) {
                 return value ? "Si" : "No"
             }},

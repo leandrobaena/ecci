@@ -5,7 +5,8 @@ Ext.define('ecci.view.main.Main', {
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
         'ecci.view.main.MainController',
-        'ecci.view.usuarios.Lista'
+        'ecci.view.usuarios.Lista',
+        'ecci.view.grupos.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -48,7 +49,8 @@ Ext.define('ecci.view.main.Main', {
             xtype: 'listaUsuarios'
         }, {
             title: 'Grupos',
-            iconCls: 'fa-users'
+            iconCls: 'fa-users',
+            xtype: 'listaGrupos'
         }, {
             title: 'Niveles de acceso',
             iconCls: 'fa-lock'

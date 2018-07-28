@@ -1,11 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" import="entidades.*, dal.*, java.util.*" %>
-<%
-    Properties dbProperties = new Properties();
-    dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-    
-    GrupoDAL dDal = new GrupoDAL(dbProperties);
-    ArrayList<Grupo> lista = dDal.listar();
-%>
 <!DOCTYPE html>
 <html>
     <head>
