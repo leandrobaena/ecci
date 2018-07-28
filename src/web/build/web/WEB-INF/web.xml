@@ -15,6 +15,7 @@
         <servlet-name>eliminarUsuario</servlet-name>
         <servlet-class>usuarios.eliminar</servlet-class>
     </servlet>
+    
     <servlet>
         <description>Listado de grupos</description>
         <servlet-name>listaGrupos</servlet-name>
@@ -30,6 +31,23 @@
         <servlet-name>eliminarGrupo</servlet-name>
         <servlet-class>grupos.eliminar</servlet-class>
     </servlet>
+    
+    <servlet>
+        <description>Listado de niveles de acceso</description>
+        <servlet-name>listaNivelesAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.lista</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Guarda un nivel de acceso</description>
+        <servlet-name>guardarNivelAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.guardar</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Elimina un nivel de acceso</description>
+        <servlet-name>eliminarNivelAcceso</servlet-name>
+        <servlet-class>nivelesAcceso.eliminar</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>listaUsuarios</servlet-name>
         <url-pattern>/usuarios/lista</url-pattern>
@@ -42,6 +60,7 @@
         <servlet-name>eliminarUsuario</servlet-name>
         <url-pattern>/usuarios/eliminar</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>listaGrupos</servlet-name>
         <url-pattern>/grupos/lista</url-pattern>
@@ -54,6 +73,20 @@
         <servlet-name>eliminarGrupo</servlet-name>
         <url-pattern>/grupos/eliminar</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>listaNivelesAcceso</servlet-name>
+        <url-pattern>/nivelesAcceso/lista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>guardarNivelAcceso</servlet-name>
+        <url-pattern>/nivelesAcceso/guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarNivelAcceso</servlet-name>
+        <url-pattern>/nivelesAcceso/eliminar</url-pattern>
+    </servlet-mapping>
+        
     <session-config>
         <session-timeout>
             30
