@@ -11,7 +11,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.modulos.Lista',
         'ecci.view.escolaridades.Lista',
         'ecci.view.profesiones.Lista',
-        'ecci.view.etiquetas.Lista'
+        'ecci.view.etiquetas.Lista',
+        'ecci.view.softwares.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -74,7 +75,8 @@ Ext.define('ecci.view.main.Main', {
             xtype: 'listaProfesiones'
         }, {
             title: 'Softwares',
-            iconCls: 'fa-cogs'
+            iconCls: 'fa-cogs',
+            xtype: 'listaSoftwares'
         }, {
             title: 'Necesidades',
             iconCls: 'fa-comment'

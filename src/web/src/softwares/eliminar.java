@@ -1,11 +1,9 @@
-package nivelesAcceso;
+package softwares;
 
-import ecci.bl.NivelAccesoBL;
-import ecci.entidades.NivelAcceso;
+import ecci.bl.SoftwareBL;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Trae la lista de niveles de acceso
+ * Elimina un software en la base de datos
  *
  * @author
  */
-public class lista extends HttpServlet {
+public class eliminar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,33 +27,23 @@ public class lista extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("application/json;charset=UTF-8");
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-        NivelAccesoBL nivelAccesoMgr = new NivelAccesoBL(0, dbProperties);
-        ArrayList<NivelAcceso> nivelesAcceso = nivelAccesoMgr.listar();
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("{");
-            out.println("\"nivelesAcceso\":");
-            out.println("[");
-            int i = 0;
-            for (NivelAcceso nivelAcceso : nivelesAcceso) {
-                if (i != 0) {
-                    out.println(",");
-                }
-                out.println("{");
-                out.println("\"id\": " + nivelAcceso.getId() + ",");
-                out.println("\"nombre\": \"" + nivelAcceso.getNombre() + "\"");
-                out.println("}");
-                i++;
-            }
-            out.println("]");
-            out.println("}");
+
+        SoftwareBL software = new SoftwareBL(Integer.parseInt(request.getParameter("id")), dbProperties);
+
+        PrintWriter out = response.getWriter();
+        try {
+            String msg;
+            software.eliminar();
+            msg = "Software eliminado con éxito";
+            out.println("{\"success\":true,\"msg\":\"" + msg + "\"}");
+        } catch (Exception ex) {
+            out.println("{\"success\":false,\"msg\":\"" + ex.getMessage() + "\"}");
         }
     }
 
@@ -74,7 +62,7 @@ public class lista extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(lista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +80,7 @@ public class lista extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(lista.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,7 +91,7 @@ public class lista extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Listado de usuarios de la aplicación";
+        return "Elimina un software";
     }// </editor-fold>
 
 }

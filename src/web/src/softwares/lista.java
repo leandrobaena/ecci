@@ -1,7 +1,7 @@
-package nivelesAcceso;
+package softwares;
 
-import ecci.bl.NivelAccesoBL;
-import ecci.entidades.NivelAcceso;
+import ecci.bl.SoftwareBL;
+import ecci.entidades.Software;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Trae la lista de niveles de acceso
+ * Trae la lista de softwares
  *
  * @author
  */
@@ -36,21 +36,25 @@ public class lista extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-        NivelAccesoBL nivelAccesoMgr = new NivelAccesoBL(0, dbProperties);
-        ArrayList<NivelAcceso> nivelesAcceso = nivelAccesoMgr.listar();
+
+        SoftwareBL softwareMgr = new SoftwareBL(0, dbProperties);
+        ArrayList<Software> softwares = softwareMgr.listar();
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("{");
-            out.println("\"nivelesAcceso\":");
+            out.println("\"softwares\":");
             out.println("[");
             int i = 0;
-            for (NivelAcceso nivelAcceso : nivelesAcceso) {
+            for (Software software : softwares) {
                 if (i != 0) {
                     out.println(",");
                 }
                 out.println("{");
-                out.println("\"id\": " + nivelAcceso.getId() + ",");
-                out.println("\"nombre\": \"" + nivelAcceso.getNombre() + "\"");
+                out.println("\"id\": " + software.getId() + ",");
+                out.println("\"nombre\": \"" + software.getNombre() + "\",");
+                out.println("\"descripcion\": \"" + software.getDescripcion().replaceAll("\n", " ").replaceAll("\r", " ").replaceAll("\t", " ") + "\",");
+                out.println("\"licencia\": \"" + software.getLicencia() + "\",");
+                out.println("\"url\": \"" + software.getUrl() + "\",");
+                out.println("\"version\": \"" + software.getVersion() + "\"");
                 out.println("}");
                 i++;
             }
@@ -103,7 +107,7 @@ public class lista extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Listado de usuarios de la aplicación";
+        return "Listado de softwares de la aplicación";
     }// </editor-fold>
 
 }

@@ -1,12 +1,4 @@
 [
-//    {
-//        "platform": "OS X 10.10",
-//        "browserName": "iPad",
-//        "version": "8.1",
-//        "device-orientation": "landscape",
-//        "chunks": 13
-//    }
-//    ,
     {
         "platform": "Windows XP",
         "browserName": "internet explorer",

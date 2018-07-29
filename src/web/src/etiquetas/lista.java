@@ -50,7 +50,7 @@ public class lista extends HttpServlet {
                 }
                 out.println("{");
                 out.println("\"id\": " + etiqueta.getId() + ",");
-                out.println("\"nombre\": \"" + etiqueta.getNombre() + "\",");
+                out.println("\"nombre\": \"" + etiqueta.getNombre() + "\"");
                 out.println("}");
                 i++;
             }

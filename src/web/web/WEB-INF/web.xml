@@ -217,6 +217,37 @@
         <url-pattern>/etiquetas/eliminar</url-pattern>
     </servlet-mapping>
     
+    <!-- Softwares -->
+    <servlet>
+        <description>Listado de softwares</description>
+        <servlet-name>listaSoftwares</servlet-name>
+        <servlet-class>softwares.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaSoftwares</servlet-name>
+        <url-pattern>/softwares/lista</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Inserta o actualiza un software</description>
+        <servlet-name>guardarSoftware</servlet-name>
+        <servlet-class>softwares.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarSoftware</servlet-name>
+        <url-pattern>/softwares/guardar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Elimina un software de la base de datos</description>
+        <servlet-name>eliminarSoftware</servlet-name>
+        <servlet-class>softwares.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarSoftware</servlet-name>
+        <url-pattern>/softwares/eliminar</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

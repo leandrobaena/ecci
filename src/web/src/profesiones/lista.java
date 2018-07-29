@@ -49,7 +49,7 @@ public class lista extends HttpServlet {
                 }
                 out.println("{");
                 out.println("\"id\": " + profesion.getId() + ",");
-                out.println("\"nombre\": \"" + profesion.getNombre() + "\",");
+                out.println("\"nombre\": \"" + profesion.getNombre() + "\"");
                 out.println("}");
                 i++;
             }
