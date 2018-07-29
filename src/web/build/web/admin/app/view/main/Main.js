@@ -10,7 +10,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.nivelesAcceso.Lista',
         'ecci.view.modulos.Lista',
         'ecci.view.escolaridades.Lista',
-        'ecci.view.profesiones.Lista'
+        'ecci.view.profesiones.Lista',
+        'ecci.view.etiquetas.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -79,7 +80,8 @@ Ext.define('ecci.view.main.Main', {
             iconCls: 'fa-comment'
         }, {
             title: 'Etiquetas',
-            iconCls: 'fa-comment'
+            iconCls: 'fa-comment',
+            xtype: 'listaEtiquetas'
         }, {
             title: 'Solicitudes',
             iconCls: 'fa-file'

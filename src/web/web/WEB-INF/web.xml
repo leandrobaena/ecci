@@ -186,6 +186,37 @@
         <url-pattern>/profesiones/eliminar</url-pattern>
     </servlet-mapping>
     
+    <!-- Etiquetas -->
+    <servlet>
+        <description>Listado de etiquetas</description>
+        <servlet-name>listaEtiquetas</servlet-name>
+        <servlet-class>etiquetas.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaEtiquetas</servlet-name>
+        <url-pattern>/etiquetas/lista</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Inserta o actualiza una etiqueta</description>
+        <servlet-name>guardarEtiqueta</servlet-name>
+        <servlet-class>etiquetas.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarEtiqueta</servlet-name>
+        <url-pattern>/etiquetas/guardar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Elimina una etiqueta de la base de datos</description>
+        <servlet-name>eliminarEtiqueta</servlet-name>
+        <servlet-class>etiquetas.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarEtiqueta</servlet-name>
+        <url-pattern>/etiquetas/eliminar</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
