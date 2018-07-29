@@ -12,7 +12,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.escolaridades.Lista',
         'ecci.view.profesiones.Lista',
         'ecci.view.etiquetas.Lista',
-        'ecci.view.softwares.Lista'
+        'ecci.view.softwares.Lista',
+        'ecci.view.calificaciones.Lista'
     ],
     controller: 'main',
     ui: 'navigation',
@@ -89,7 +90,8 @@ Ext.define('ecci.view.main.Main', {
             iconCls: 'fa-file'
         }, {
             title: 'Calificaciones de software',
-            iconCls: 'fa-check'
+            iconCls: 'fa-check',
+            xtype: 'listaCalificaciones'
         }
     ]
 });

@@ -248,6 +248,37 @@
         <url-pattern>/softwares/eliminar</url-pattern>
     </servlet-mapping>
 
+    <!-- Calificaciones -->
+    <servlet>
+        <description>Listado de calificaciones</description>
+        <servlet-name>listaCalificaciones</servlet-name>
+        <servlet-class>calificaciones.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaCalificaciones</servlet-name>
+        <url-pattern>/calificaciones/lista</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Inserta o actualiza una calificación</description>
+        <servlet-name>guardarCalificacion</servlet-name>
+        <servlet-class>calificaciones.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarCalificacion</servlet-name>
+        <url-pattern>/calificaciones/guardar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Elimina una calificación de la base de datos</description>
+        <servlet-name>eliminarCalificacion</servlet-name>
+        <servlet-class>calificaciones.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarCalificacion</servlet-name>
+        <url-pattern>/calificaciones/eliminar</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

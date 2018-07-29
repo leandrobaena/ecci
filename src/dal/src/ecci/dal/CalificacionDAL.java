@@ -79,13 +79,13 @@ public class CalificacionDAL {
         for (HashMap<String, String> row : table) {
             Calificacion c = new Calificacion(Integer.parseInt(row.get("idcalificacion")));
             c.setSoftware(new Software(Integer.parseInt(row.get("idsoftware"))));
-            c.getSoftware().setNombre("nombreSoftware");
-            c.getSoftware().setDescripcion("descripcion");
-            c.getSoftware().setLicencia("licencia");
-            c.getSoftware().setUrl("url");
-            c.getSoftware().setVersion("version");
+            c.getSoftware().setNombre(row.get("nombreSoftware"));
+            c.getSoftware().setDescripcion(row.get("descripcion"));
+            c.getSoftware().setLicencia(row.get("licencia"));
+            c.getSoftware().setUrl(row.get("url"));
+            c.getSoftware().setVersion(row.get("version"));
             c.setEtiqueta(new Etiqueta(Integer.parseInt(row.get("idetiqueta"))));
-            c.getEtiqueta().setNombre("nombreEtiqueta");
+            c.getEtiqueta().setNombre(row.get("nombreEtiqueta"));
             c.setPorcentaje(Integer.parseInt(row.get("porcentaje")));
             lista.add(c);
         }
