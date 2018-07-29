@@ -155,6 +155,37 @@
         <url-pattern>/escolaridades/eliminar</url-pattern>
     </servlet-mapping>
 
+    <!-- Profesiones -->
+    <servlet>
+        <description>Listado de profesiones</description>
+        <servlet-name>listaProfesiones</servlet-name>
+        <servlet-class>profesiones.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaProfesiones</servlet-name>
+        <url-pattern>/profesiones/lista</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Inserta o actualiza una profesion</description>
+        <servlet-name>guardarProfesion</servlet-name>
+        <servlet-class>profesiones.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarProfesion</servlet-name>
+        <url-pattern>/profesiones/guardar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Elimina una profesion de la base de datos</description>
+        <servlet-name>eliminarProfesion</servlet-name>
+        <servlet-class>profesiones.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarProfesion</servlet-name>
+        <url-pattern>/profesiones/eliminar</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
