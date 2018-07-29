@@ -78,6 +78,16 @@ public class NivelAccesoBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.nivelAcceso.toString();
+    }
+
+    /**
      * Trae el listado de niveles de acceso desde la base de datos
      *
      * @return Listado de niveles de acceso desde la base de datos

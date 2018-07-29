@@ -147,5 +147,20 @@ public class Usuario {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"login\": \"" + this.login + "\","
+                + "\"nombres\": \"" + this.nombres + "\","
+                + "\"apellidos\": \"" + this.apellidos + "\","
+                + "\"activo\": " + (this.activo ? "true" : "false")
+                + "}";
+    }
     //</editor-fold>
 }

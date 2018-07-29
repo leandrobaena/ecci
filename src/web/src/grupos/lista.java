@@ -48,11 +48,7 @@ public class lista extends HttpServlet {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println("{");
-                out.println("\"id\": " + grupo.getId() + ",");
-                out.println("\"nombre\": \"" + grupo.getNombre() + "\",");
-                out.println("\"activo\": " + (grupo.isActivo() ? "true" : "false"));
-                out.println("}");
+                out.println(grupo.toString());
                 i++;
             }
             out.println("]");

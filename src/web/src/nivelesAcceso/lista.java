@@ -48,10 +48,7 @@ public class lista extends HttpServlet {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println("{");
-                out.println("\"id\": " + nivelAcceso.getId() + ",");
-                out.println("\"nombre\": \"" + nivelAcceso.getNombre() + "\"");
-                out.println("}");
+                out.println(nivelAcceso.toString());
                 i++;
             }
             out.println("]");

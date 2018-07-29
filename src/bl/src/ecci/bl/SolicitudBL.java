@@ -157,6 +157,16 @@ public class SolicitudBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.solicitud.toString();
+    }
+
+    /**
      * Trae el listado de solicitudes desde la base de datos
      *
      * @return Listado de solicitudes desde la base de datos

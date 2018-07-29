@@ -49,11 +49,7 @@ public class lista extends HttpServlet {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println("{");
-                out.println("\"id\": " + modulo.getId() + ",");
-                out.println("\"nombre\": \"" + modulo.getNombre() + "\",");
-                out.println("\"activo\": " + (modulo.isActivo() ? "true" : "false"));
-                out.println("}");
+                out.println(modulo.toString());
                 i++;
             }
             out.println("]");

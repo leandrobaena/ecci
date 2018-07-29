@@ -79,21 +79,13 @@ public class EtiquetaBL {
     }
 
     /**
-     * Trae la etiqueta que actualmente se está persistiendo
+     * Retorna una representación del objeto en formato JSON
      *
-     * @return Etiqueta que actualmente se está persistiendo
+     * @return Representación del objeto en formato JSON
      */
-    public Etiqueta getEtiqueta() {
-        return this.etiqueta;
-    }
-
-    /**
-     * Cambia la etiqueta que actualmente se está persistiendo
-     *
-     * @param etiqueta Nueva etiqueta que actualmente se está persistiendo
-     */
-    public void setEtiqueta(Etiqueta etiqueta) {
-        this.etiqueta = etiqueta;
+    @Override
+    public String toString() {
+        return this.etiqueta.toString();
     }
 
     /**

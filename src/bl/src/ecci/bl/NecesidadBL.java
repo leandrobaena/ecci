@@ -97,6 +97,16 @@ public class NecesidadBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.necesidad.toString();
+    }
+
+    /**
      * Trae el listado de necesidades desde la base de datos
      *
      * @param padre Identificador de la necesidad padre de la que se trae las

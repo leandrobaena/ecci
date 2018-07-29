@@ -98,5 +98,18 @@ public class Necesidad {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"codigo\": \"" + this.codigo + "\","
+                + "\"descripcion\": \"" + this.descripcion + "\""
+                + "}";
+    }
     //</editor-fold>
 }

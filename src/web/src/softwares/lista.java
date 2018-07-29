@@ -48,14 +48,7 @@ public class lista extends HttpServlet {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println("{");
-                out.println("\"id\": " + software.getId() + ",");
-                out.println("\"nombre\": \"" + software.getNombre() + "\",");
-                out.println("\"descripcion\": \"" + software.getDescripcion().replaceAll("\n", " ").replaceAll("\r", " ").replaceAll("\t", " ") + "\",");
-                out.println("\"licencia\": \"" + software.getLicencia() + "\",");
-                out.println("\"url\": \"" + software.getUrl() + "\",");
-                out.println("\"version\": \"" + software.getVersion() + "\"");
-                out.println("}");
+                out.println(software.toString());
                 i++;
             }
             out.println("]");

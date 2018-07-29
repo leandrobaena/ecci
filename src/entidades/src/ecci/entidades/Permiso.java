@@ -122,5 +122,19 @@ public class Permiso {
     public void setModulo(Modulo modulo) {
         this.modulo = modulo;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"grupo\": " + this.grupo + ","
+                + "\"nivelAcceso\": " + this.nivelAcceso + ","
+                + "\"modulo\": " + this.modulo
+                + "}";
+    }
     //</editor-fold>
 }

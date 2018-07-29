@@ -99,5 +99,18 @@ public class Modulo {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"nombre\": \"" + this.nombre + "\","
+                + "\"activo\": " + (this.activo ? "true" : "false")
+                + "}";
+    }
     //</editor-fold>
 }

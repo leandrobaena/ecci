@@ -126,5 +126,19 @@ public class Calificacion {
     public void setPorcentaje(int porcentaje) {
         this.porcentaje = porcentaje;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"software\": " + this.software + ","
+                + "\"etiqueta\": " + this.etiqueta + ","
+                + "\"porcentaje\": " + this.porcentaje
+                + "}";
+    }
     //</editor-fold>
 }

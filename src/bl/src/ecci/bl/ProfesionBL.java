@@ -78,6 +78,16 @@ public class ProfesionBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.profesion.toString();
+    }
+
+    /**
      * Trae el listado de profesiones desde la base de datos
      *
      * @return Listado de profesiones desde la base de datos

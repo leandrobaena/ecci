@@ -87,5 +87,9 @@ Ext.define('ecci.view.main.Main', {
         }, {
             title: 'Solicitudes',
             iconCls: 'fa-file'
-        }]
+        }, {
+            title: 'Calificaciones de software',
+            iconCls: 'fa-check'
+        }
+    ]
 });

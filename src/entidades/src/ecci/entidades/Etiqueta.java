@@ -77,5 +77,17 @@ public class Etiqueta {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"nombre\": \"" + this.nombre + "\""
+                + "}";
+    }
     //</editor-fold>
 }

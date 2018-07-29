@@ -133,6 +133,16 @@ public class UsuarioBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.usuario.toString();
+    }
+
+    /**
      * Trae el listado de usuarios desde la base de datos
      *
      * @return Listado de usuarios desde la base de datos

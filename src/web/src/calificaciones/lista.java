@@ -1,7 +1,7 @@
-package etiquetas;
+package calificaciones;
 
-import ecci.bl.EtiquetaBL;
-import ecci.entidades.Etiqueta;
+import ecci.bl.CalificacionBL;
+import ecci.entidades.Calificacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Trae la lista de etiquetas
+ * Trae la lista de calificaciones
  *
  * @author
  */
@@ -36,19 +36,20 @@ public class lista extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-        
-        EtiquetaBL etiquetaMgr = new EtiquetaBL(0, dbProperties);
-        ArrayList<Etiqueta> etiquetas = etiquetaMgr.listar();
+
+        CalificacionBL calificacionMgr = new CalificacionBL(0, dbProperties);
+        ArrayList<Calificacion> calificaciones = calificacionMgr.listar();
+
         try (PrintWriter out = response.getWriter()) {
             out.println("{");
-            out.println("\"etiquetas\":");
+            out.println("\"calificaciones\":");
             out.println("[");
             int i = 0;
-            for (Etiqueta etiqueta : etiquetas) {
+            for (Calificacion calificacion : calificaciones) {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println(etiqueta.toString());
+                out.println(calificacion.toString());
                 i++;
             }
             out.println("]");
@@ -100,7 +101,7 @@ public class lista extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Listado de etiquetas de la aplicación";
+        return "Listado de calificaciones de los softwares";
     }// </editor-fold>
 
 }

@@ -175,5 +175,21 @@ public class Software {
     public void setVersion(String version) {
         this.version = version;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"nombre\": \"" + this.nombre + "\","
+                + "\"descripcion\": \"" + this.descripcion + "\","
+                + "\"licencia\": \"" + this.licencia + "\","
+                + "\"url\": \"" + this.url + "\","
+                + "\"version\": \"" + this.version + "\""
+                + "}";
+    }
     //</editor-fold>
 }

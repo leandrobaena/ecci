@@ -97,6 +97,16 @@ public class GrupoBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.grupo.toString();
+    }
+
+    /**
      * Trae el listado de grupos desde la base de datos
      *
      * @return Listado de grupos desde la base de datos

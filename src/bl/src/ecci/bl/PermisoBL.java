@@ -117,6 +117,16 @@ public class PermisoBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.permiso.toString();
+    }
+
+    /**
      * Trae el listado de permisos desde la base de datos
      *
      * @return Listado de permisos desde la base de datos

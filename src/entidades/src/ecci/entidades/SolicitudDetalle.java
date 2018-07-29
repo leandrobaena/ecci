@@ -127,5 +127,19 @@ public class SolicitudDetalle {
     public void setHerramientaActual(String herramientaActual) {
         this.herramientaActual = herramientaActual;
     }
-    //</editor-fold>
+ 
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"necesidad\": \"" + this.necesidad + "\","
+                + "\"justificacion\": \"" + this.justificacion + "\","
+                + "\"herramientaActual\": \"" + this.herramientaActual + "\""
+                + "}";
+    }
+   //</editor-fold>
 }

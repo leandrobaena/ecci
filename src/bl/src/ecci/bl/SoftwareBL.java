@@ -150,6 +150,16 @@ public class SoftwareBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.software.toString();
+    }
+
+    /**
      * Trae el listado de softwares desde la base de datos
      *
      * @return Listado de softwares desde la base de datos

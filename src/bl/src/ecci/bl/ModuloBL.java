@@ -96,6 +96,16 @@ public class ModuloBL {
     }
 
     /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return this.modulo.toString();
+    }
+
+    /**
      * Trae el listado de módulos desde la base de datos
      *
      * @return Listado de módulos desde la base de datos

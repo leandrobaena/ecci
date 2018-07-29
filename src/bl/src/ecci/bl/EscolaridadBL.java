@@ -78,21 +78,13 @@ public class EscolaridadBL {
     }
 
     /**
-     * Trae la escolaridad que actualmente se está persistiendo
+     * Retorna una representación del objeto en formato JSON
      *
-     * @return Escolaridad que actualmente se está persistiendo
+     * @return Representación del objeto en formato JSON
      */
-    public Escolaridad getEscolaridad() {
-        return this.escolaridad;
-    }
-
-    /**
-     * Cambia la escolaridad que actualmente se está persistiendo
-     *
-     * @param escolaridad Nueva escolaridad que actualmente se está persistiendo
-     */
-    public void setEscolaridad(Escolaridad escolaridad) {
-        this.escolaridad = escolaridad;
+    @Override
+    public String toString() {
+        return this.escolaridad.toString();
     }
 
     /**

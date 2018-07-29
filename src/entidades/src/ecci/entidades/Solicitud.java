@@ -179,5 +179,21 @@ public class Solicitud {
     public void setProfesion(Profesion profesion) {
         this.profesion = profesion;
     }
+
+    /**
+     * Retorna una representación del objeto en formato JSON
+     *
+     * @return Representación del objeto en formato JSON
+     */
+    @Override
+    public String toString() {
+        return "{\"id\": " + this.id + ","
+                + "\"login\": \"" + this.fecha + "\","
+                + "\"nombre\": \"" + this.nombre + "\","
+                + "\"email\": \"" + this.email + "\","
+                + "\"escolaridad\": " + this.escolaridad + ","
+                + "\"profesion\": " + this.profesion
+                + "}";
+    }
     //</editor-fold>
 }

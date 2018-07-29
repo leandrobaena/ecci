@@ -39,7 +39,6 @@ public class lista extends HttpServlet {
         UsuarioBL usuarioMgr = new UsuarioBL(0, dbProperties);
         ArrayList<Usuario> usuarios = usuarioMgr.listar();
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("{");
             out.println("\"usuarios\":");
             out.println("[");
@@ -48,13 +47,7 @@ public class lista extends HttpServlet {
                 if (i != 0) {
                     out.println(",");
                 }
-                out.println("{");
-                out.println("\"id\": " + usuario.getId() + ",");
-                out.println("\"login\": \"" + usuario.getLogin() + "\",");
-                out.println("\"nombres\": \"" + usuario.getNombres() + "\",");
-                out.println("\"apellidos\": \"" + usuario.getApellidos() + "\",");
-                out.println("\"activo\": " + (usuario.isActivo() ? "true" : "false"));
-                out.println("}");
+                out.println(usuario.toString());
                 i++;
             }
             out.println("]");
