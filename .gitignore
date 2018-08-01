@@ -20,3 +20,5 @@
 /src/web/dist/
 /src/bl/dist/
 /src/bl/build/
+src/web/web/WEB-INF/database.properties
+src/web/build/web/WEB-INF/database.properties
