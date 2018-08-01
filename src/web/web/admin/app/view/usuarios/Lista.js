@@ -17,8 +17,15 @@ Ext.define('ecci.view.usuarios.Lista', {
         {text: 'Apellidos', dataIndex: 'apellidos', flex: 1},
         {text: 'Activo', dataIndex: 'activo', flex: 1, renderer: function (value) {
                 return value ? "Si" : "No"
-            }},
-        {xtype: 'actioncolumn', width: 50, items: [{
+            }
+        }, {
+            xtype: 'actioncolumn',
+            flex: 120,
+            items: [{
+                    iconCls: 'x-fa fa-users',
+                    tooltip: 'Grupos',
+                    handler: 'grupos'
+                }, {
                     iconCls: 'x-fa fa-edit',
                     tooltip: 'Editar',
                     handler: 'editar'
