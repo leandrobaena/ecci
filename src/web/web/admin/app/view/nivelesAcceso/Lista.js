@@ -30,6 +30,10 @@ Ext.define('ecci.view.nivelesAcceso.Lista', {
             items: [{
                     xtype: 'button',
                     text: 'Insertar',
+                    iconCls: 'x-fa fa-plus',
+                    style: {
+                        border: '1px #404040 solid'
+                    },
                     handler: 'insertar'
                 }]
         }]

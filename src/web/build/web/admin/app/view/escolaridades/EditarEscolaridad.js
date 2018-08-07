@@ -3,6 +3,7 @@ Ext.define('ecci.view.escolaridades.EditarEscolaridad', {
     title: 'Editar escolaridad',
     alias: 'editarEscolaridad',
     controller: 'escolaridades',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

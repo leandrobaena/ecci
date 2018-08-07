@@ -20,7 +20,7 @@ Ext.define('ecci.view.usuarios.Lista', {
             }
         }, {
             xtype: 'actioncolumn',
-            flex: 120,
+            width: 75,
             items: [{
                     iconCls: 'x-fa fa-users',
                     tooltip: 'Grupos',
@@ -42,7 +42,12 @@ Ext.define('ecci.view.usuarios.Lista', {
             items: [{
                     xtype: 'button',
                     text: 'Insertar',
+                    iconCls: 'x-fa fa-plus',
+                    style: {
+                        border: '1px #404040 solid'
+                    },
                     handler: 'insertar'
                 }]
         }]
 });
+

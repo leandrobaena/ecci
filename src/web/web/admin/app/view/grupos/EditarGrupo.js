@@ -3,6 +3,7 @@ Ext.define('ecci.view.grupos.EditarGrupo', {
     title: 'Editar grupo',
     alias: 'editarGrupo',
     controller: 'grupos',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

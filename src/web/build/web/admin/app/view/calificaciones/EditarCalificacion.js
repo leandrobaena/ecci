@@ -3,6 +3,7 @@ Ext.define('ecci.view.calificaciones.EditarCalificacion', {
     title: 'Editar calificación',
     alias: 'editarCalificacion',
     controller: 'calificaciones',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

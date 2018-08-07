@@ -3,6 +3,7 @@ Ext.define('ecci.view.nivelesAcceso.EditarNivelAcceso', {
     title: 'Editar nivel de acceso',
     alias: 'editarNivelAcceso',
     controller: 'nivelesAcceso',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

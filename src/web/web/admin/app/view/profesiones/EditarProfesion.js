@@ -3,6 +3,7 @@ Ext.define('ecci.view.profesiones.EditarProfesion', {
     title: 'Editar profesión',
     alias: 'editarProfesion',
     controller: 'profesiones',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

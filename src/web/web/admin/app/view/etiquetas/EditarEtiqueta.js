@@ -3,6 +3,7 @@ Ext.define('ecci.view.etiquetas.EditarEtiqueta', {
     title: 'Editar etiqueta',
     alias: 'editarEtiqueta',
     controller: 'etiquetas',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

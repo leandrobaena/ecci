@@ -3,6 +3,7 @@ Ext.define('ecci.view.modulos.EditarModulo', {
     title: 'Editar módulo',
     alias: 'editarModulo',
     controller: 'modulos',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

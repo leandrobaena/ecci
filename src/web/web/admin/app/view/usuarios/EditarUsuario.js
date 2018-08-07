@@ -3,6 +3,7 @@ Ext.define('ecci.view.usuarios.EditarUsuario', {
     title: 'Editar usuario',
     alias: 'editarUsuario',
     controller: 'usuarios',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

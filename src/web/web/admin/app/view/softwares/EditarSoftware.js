@@ -3,6 +3,7 @@ Ext.define('ecci.view.softwares.EditarSoftware', {
     title: 'Editar software',
     alias: 'editarSoftware',
     controller: 'softwares',
+    modal: true,
     items: [{
             xtype: 'form',
             bodyPadding: 10,

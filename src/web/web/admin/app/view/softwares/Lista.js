@@ -33,6 +33,10 @@ Ext.define('ecci.view.softwares.Lista', {
             items: [{
                     xtype: 'button',
                     text: 'Insertar',
+                    iconCls: 'x-fa fa-plus',
+                    style: {
+                        border: '1px #404040 solid'
+                    },
                     handler: 'insertar'
                 }]
         }]
