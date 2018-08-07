@@ -168,7 +168,7 @@ public class GrupoBL {
      * @param usuario Usuario que se desea eliminar del grupo
      * @throws SQLException
      */
-    public void eliminarUsuarioEnGrupo(Grupo usuario) throws SQLException {
+    public void eliminarUsuarioEnGrupo(Usuario usuario) throws SQLException {
         this.grupoDAL.eliminarUsuarioEnGrupo(usuario);
     }
 

@@ -2,7 +2,8 @@ Ext.define('ecci.view.grupos.GruposController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.grupos',
     requires: [
-        'ecci.view.grupos.EditarGrupo'
+        'ecci.view.grupos.EditarGrupo',
+        'ecci.view.grupos.UsuariosGrupo'
     ],
     insertar: function () {
         var w = Ext.create('editarGrupo');
@@ -61,6 +62,49 @@ Ext.define('ecci.view.grupos.GruposController', {
                     }
                 });
             }
+        });
+    },
+    usuarios: function (v, rn, c, i, e, rec, row) {
+        Ext.create('usuariosGrupo').show();
+        Ext.getStore('usuariosGrupo').getProxy().setExtraParam('idgrupo', rec.get('id'));
+        Ext.getStore('usuariosGrupo').load();
+        Ext.getStore('usuariosNoGrupo').getProxy().setExtraParam('idgrupo', rec.get('id'));
+        Ext.getStore('usuariosNoGrupo').load();
+    },
+    insertarUsuario: function (n, d, dr, dp) {
+        Ext.each(d.records, function (n, i, s) {
+            Ext.Ajax.request({
+                url: '../grupos/asociarUsuario',
+                params: {
+                    tipo: 'in',
+                    idgrupo: Ext.getStore('usuariosGrupo').getProxy().extraParams.idgrupo,
+                    idusuario: n.get('id')
+                },
+                success: function (r, o) {
+                    Ext.MessageBox.alert('Usuario asignado', 'Usuario asignado con \xe9xito');
+                },
+                failure: function () {
+                    Ext.MessageBox.alert('Error', 'Error al asignar el usuario');
+                }
+            });
+        });
+    },
+    removerUsuario: function (no, d, dr, dp) {
+        Ext.each(d.records, function (n, i, s) {
+            Ext.Ajax.request({
+                url: '../grupos/asociarUsuario',
+                params: {
+                    tipo: 'out',
+                    idgrupo: Ext.getStore('usuariosGrupo').getProxy().extraParams.idgrupo,
+                    idusuario: n.get('id')
+                },
+                success: function (r, o) {
+                    Ext.MessageBox.alert('Usuario eliminado', 'Usuario eliminado con \xe9xito');
+                },
+                failure: function () {
+                    Ext.MessageBox.alert('Error', 'Error al eliminar el usuario');
+                }
+            });
         });
     }
 });

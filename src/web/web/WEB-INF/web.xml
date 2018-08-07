@@ -82,6 +82,26 @@
         <url-pattern>/grupos/eliminar</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <description>Listado de usuarios de un grupo</description>
+        <servlet-name>usuariosGrupo</servlet-name>
+        <servlet-class>grupos.usuariosGrupo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>usuariosGrupo</servlet-name>
+        <url-pattern>/grupos/usuariosGrupo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Asocia o disocia un usuario de un grupo</description>
+        <servlet-name>asociarUsuario</servlet-name>
+        <servlet-class>grupos.asociarUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>asociarUsuario</servlet-name>
+        <url-pattern>/grupos/asociarUsuario</url-pattern>
+    </servlet-mapping>
+    
     <!-- Niveles de acceso -->
     <servlet>
         <description>Listado de niveles de acceso</description>

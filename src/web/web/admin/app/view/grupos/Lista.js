@@ -15,8 +15,15 @@ Ext.define('ecci.view.grupos.Lista', {
         {text: 'Nombre', dataIndex: 'nombre', flex: 1},
         {text: 'Activo', dataIndex: 'activo', flex: 1, renderer: function (value) {
                 return value ? "Si" : "No"
-            }},
-        {xtype: 'actioncolumn', width: 50, items: [{
+            }
+        }, {
+            xtype: 'actioncolumn',
+            width: 75,
+            items: [{
+                    iconCls: 'x-fa fa-user',
+                    tooltip: 'Usuarios',
+                    handler: 'usuarios'
+                }, {
                     iconCls: 'x-fa fa-edit',
                     tooltip: 'Editar',
                     handler: 'editar'
@@ -24,7 +31,8 @@ Ext.define('ecci.view.grupos.Lista', {
                     iconCls: 'x-fa fa-trash',
                     tooltip: 'Eliminar',
                     handler: 'eliminar'
-                }]}
+                }]
+        }
     ],
     dockedItems: [{
             xtype: 'pagingtoolbar',

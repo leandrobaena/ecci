@@ -163,7 +163,7 @@ public class GrupoDAL {
      * @param usuario Usuario que se desea eliminar del grupo
      * @throws SQLException
      */
-    public void eliminarUsuarioEnGrupo(Grupo usuario) throws SQLException {
+    public void eliminarUsuarioEnGrupo(Usuario usuario) throws SQLException {
         if (grupo != null) {
             this.conexion.delete(
                     "DELETE FROM usuariogrupo "

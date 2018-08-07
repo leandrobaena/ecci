@@ -1,10 +1,11 @@
-package usuarios;
+package grupos;
 
-import ecci.bl.UsuarioBL;
-import ecci.entidades.Grupo;
+import ecci.bl.GrupoBL;
+import ecci.entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Asocia o disocia un grupo a un usuario en la base de datos
+ * Trae la lista de usuarios asociados a un grupo
  *
  * @author
  */
-public class asociarGrupo extends HttpServlet {
+public class usuariosGrupo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,28 +29,35 @@ public class asociarGrupo extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("application/json;charset=UTF-8");
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
-
-        UsuarioBL usuario = new UsuarioBL(Integer.parseInt(request.getParameter("idusuario")), dbProperties);
-
-        PrintWriter out = response.getWriter();
-        try {
-            String msg;
-            if (request.getParameter("tipo").equals("in")) {
-                usuario.insertarUsuarioEnGrupo(new Grupo(Integer.parseInt(request.getParameter("idgrupo"))));
-                msg = "Grupo asociado con éxito";
-            } else {
-                usuario.eliminarUsuarioEnGrupo(new Grupo(Integer.parseInt(request.getParameter("idgrupo"))));
-                msg = "Grupo eliminado con éxito";
+        
+        GrupoBL grupoMgr = new GrupoBL(Integer.parseInt(request.getParameter("idgrupo")), dbProperties);
+        ArrayList<Usuario> usuarios;
+        if (request.getParameter("tipo").equals("in")) {
+            usuarios = grupoMgr.listarUsuariosActuales();
+        } else {
+            usuarios = grupoMgr.listarUsuariosExcluidos();
+        }
+        try (PrintWriter out = response.getWriter()) {
+            out.println("{");
+            out.println("\"usuarios\":");
+            out.println("[");
+            int i = 0;
+            for (Usuario usuario : usuarios) {
+                if (i != 0) {
+                    out.println(",");
+                }
+                out.println(usuario.toString());
+                i++;
             }
-            out.println("{\"success\":true,\"msg\":\"" + msg + "\"}");
-        } catch (Exception ex) {
-            out.println("{\"success\":false,\"msg\":\"" + ex.getMessage() + "\"}");
+            out.println("]");
+            out.println("}");
         }
     }
 
@@ -68,7 +76,7 @@ public class asociarGrupo extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(asociarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(usuariosGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,7 +94,7 @@ public class asociarGrupo extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(asociarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(usuariosGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -97,7 +105,7 @@ public class asociarGrupo extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Guarda un usuario";
+        return "Listado de usuarios de la aplicación";
     }// </editor-fold>
 
 }

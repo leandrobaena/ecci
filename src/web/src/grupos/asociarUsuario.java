@@ -1,7 +1,7 @@
-package usuarios;
+package grupos;
 
-import ecci.bl.UsuarioBL;
-import ecci.entidades.Grupo;
+import ecci.bl.GrupoBL;
+import ecci.entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Asocia o disocia un grupo a un usuario en la base de datos
+ * Asocia o disocia un usuaro a un grupo en la base de datos
  *
  * @author
  */
-public class asociarGrupo extends HttpServlet {
+public class asociarUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +35,17 @@ public class asociarGrupo extends HttpServlet {
         Properties dbProperties = new Properties();
         dbProperties.load(request.getServletContext().getResourceAsStream("/WEB-INF/database.properties"));
 
-        UsuarioBL usuario = new UsuarioBL(Integer.parseInt(request.getParameter("idusuario")), dbProperties);
+        GrupoBL grupo = new GrupoBL(Integer.parseInt(request.getParameter("idgrupo")), dbProperties);
 
         PrintWriter out = response.getWriter();
         try {
             String msg;
             if (request.getParameter("tipo").equals("in")) {
-                usuario.insertarUsuarioEnGrupo(new Grupo(Integer.parseInt(request.getParameter("idgrupo"))));
-                msg = "Grupo asociado con éxito";
+                grupo.insertarUsuarioEnGrupo(new Usuario(Integer.parseInt(request.getParameter("idusuario"))));
+                msg = "Usuario asociado con éxito";
             } else {
-                usuario.eliminarUsuarioEnGrupo(new Grupo(Integer.parseInt(request.getParameter("idgrupo"))));
-                msg = "Grupo eliminado con éxito";
+                grupo.eliminarUsuarioEnGrupo(new Usuario(Integer.parseInt(request.getParameter("idusuario"))));
+                msg = "Usaurio eliminado con éxito";
             }
             out.println("{\"success\":true,\"msg\":\"" + msg + "\"}");
         } catch (Exception ex) {
@@ -68,7 +68,7 @@ public class asociarGrupo extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(asociarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(asociarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,7 +86,7 @@ public class asociarGrupo extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(asociarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(asociarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
