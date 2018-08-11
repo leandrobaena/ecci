@@ -349,6 +349,26 @@
         <servlet-name>eliminarNecesidad</servlet-name>
         <url-pattern>/necesidades/eliminar</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <description>Listado de etiquetas de una necesidad</description>
+        <servlet-name>etiquetasNecesidad</servlet-name>
+        <servlet-class>necesidades.etiquetasNecesidad</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>etiquetasNecesidad</servlet-name>
+        <url-pattern>/necesidades/etiquetasNecesidad</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Asocia o disocia una etiqueta de una necesidad</description>
+        <servlet-name>asociarEtiqueta</servlet-name>
+        <servlet-class>necesidades.asociarEtiqueta</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>asociarEtiqueta</servlet-name>
+        <url-pattern>/necesidades/asociarEtiqueta</url-pattern>
+    </servlet-mapping>
 
     <session-config>
         <session-timeout>

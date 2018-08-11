@@ -26,7 +26,14 @@ Ext.define('ecci.view.necesidades.Lista', {
         {xtype: 'treecolumn', text: 'Id', dataIndex: 'idnecesidad'},
         {text: 'Código', dataIndex: 'codigo', flex: 1},
         {text: 'Descripción', dataIndex: 'descripcion', flex: 9},
-        {xtype: 'actioncolumn', width: 50, items: [{
+        {
+            xtype: 'actioncolumn',
+            width: 75,
+            items: [{
+                    iconCls: 'x-fa fa-comment',
+                    tooltip: 'Etiquetas',
+                    handler: 'etiquetas'
+                }, {
                     iconCls: 'x-fa fa-edit',
                     tooltip: 'Editar',
                     handler: 'editar'

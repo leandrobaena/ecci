@@ -2,7 +2,8 @@ Ext.define('ecci.view.necesidades.NecesidadesController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.necesidades',
     requires: [
-        'ecci.view.necesidades.EditarNecesidad'
+        'ecci.view.necesidades.EditarNecesidad',
+        'ecci.view.necesidades.EtiquetasNecesidad'
     ],
     insertar: function () {
         var w = Ext.create('editarNecesidad');
@@ -62,6 +63,49 @@ Ext.define('ecci.view.necesidades.NecesidadesController', {
                     }
                 });
             }
+        });
+    },
+    etiquetas: function (v, rn, c, i, e, rec, row) {
+        Ext.create('etiquetasNecesidad').show();
+        Ext.getStore('etiquetasNecesidad').getProxy().setExtraParam('idnecesidad', rec.get('id'));
+        Ext.getStore('etiquetasNecesidad').load();
+        Ext.getStore('etiquetasNoNecesidad').getProxy().setExtraParam('idnecesidad', rec.get('id'));
+        Ext.getStore('etiquetasNoNecesidad').load();
+    },
+    insertarEtiqueta: function (n, d, dr, dp) {
+        Ext.each(d.records, function (n, i, s) {
+            Ext.Ajax.request({
+                url: '../necesidades/asociarEtiqueta',
+                params: {
+                    tipo: 'in',
+                    idnecesidad: Ext.getStore('etiquetasNecesidad').getProxy().extraParams.idnecesidad,
+                    idetiqueta: n.get('id')
+                },
+                success: function (r, o) {
+                    Ext.MessageBox.alert('Etiqueta asignada', 'Etiqueta asignada con \xe9xito');
+                },
+                failure: function () {
+                    Ext.MessageBox.alert('Error', 'Error al asignar la etiqueta');
+                }
+            });
+        });
+    },
+    removerEtiqueta: function (no, d, dr, dp) {
+        Ext.each(d.records, function (n, i, s) {
+            Ext.Ajax.request({
+                url: '../necesidades/asociarEtiqueta',
+                params: {
+                    tipo: 'out',
+                    idnecesidad: Ext.getStore('etiquetasNecesidad').getProxy().extraParams.idnecesidad,
+                    idetiqueta: n.get('id')
+                },
+                success: function (r, o) {
+                    Ext.MessageBox.alert('Etiqeuta eliminada', 'Etiqueta eliminada con \xe9xito');
+                },
+                failure: function () {
+                    Ext.MessageBox.alert('Error', 'Error al eliminar la etiqueta');
+                }
+            });
         });
     }
 });
