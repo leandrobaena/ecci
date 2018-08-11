@@ -17,11 +17,13 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.necesidades.Lista'
     ],
     controller: 'main',
-    ui: 'navigation',
     titleRotation: 0,
     tabRotation: 0,
     tabBar: {
         flex: 1,
+        style: {
+            backgroundColor: 'gray'
+        },
         layout: {
             align: 'stretch',
             overflowHandler: 'scroller'
@@ -53,46 +55,49 @@ Ext.define('ecci.view.main.Main', {
     },
     items: [{
             title: 'Usuarios',
-            iconCls: 'fa-user',
+            iconCls: 'x-fa fa-user',
             xtype: 'listaUsuarios'
         }, {
             title: 'Grupos',
-            iconCls: 'fa-users',
+            iconCls: 'x-fa fa-users',
             xtype: 'listaGrupos'
         }, {
             title: 'Niveles de acceso',
-            iconCls: 'fa-lock',
+            iconCls: 'x-fa fa-lock',
             xtype: 'listaNivelesAcceso'
         }, {
             title: 'M&oacute;dulos',
-            iconCls: 'fa-bars',
+            iconCls: 'x-fa fa-bars',
             xtype: 'listaModulos'
         }, {
+            title: 'Permisos',
+            iconCls: 'x-fa fa-exclamation-triangle'
+        }, {
             title: 'Escolaridades',
-            iconCls: 'fa-graduation-cap',
+            iconCls: 'x-fa fa-graduation-cap',
             xtype: 'listaEscolaridades'
         }, {
             title: 'Profesiones',
-            iconCls: 'fa-briefcase',
+            iconCls: 'x-fa fa-briefcase',
             xtype: 'listaProfesiones'
         }, {
             title: 'Softwares',
-            iconCls: 'fa-cogs',
+            iconCls: 'x-fa fa-cogs',
             xtype: 'listaSoftwares'
         }, {
             title: 'Necesidades',
-            iconCls: 'fa-list-ul',
+            iconCls: 'x-fa fa-list-ul',
             xtype: 'listaNecesidades'
         }, {
             title: 'Etiquetas',
-            iconCls: 'fa-comment',
+            iconCls: 'x-fa fa-comment',
             xtype: 'listaEtiquetas'
         }, {
             title: 'Solicitudes',
-            iconCls: 'fa-file'
+            iconCls: 'x-fa fa-file'
         }, {
             title: 'Calificaciones de software',
-            iconCls: 'fa-check',
+            iconCls: 'x-fa fa-check',
             xtype: 'listaCalificaciones'
         }
     ]
