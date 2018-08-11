@@ -70,14 +70,14 @@ public class NecesidadDAL {
      */
     public ArrayList<Necesidad> listar(int padre) throws SQLException {
         ArrayList<HashMap<String, String>> table = this.conexion.select(
-                "SELECT idnecesidad, codigo, descricion "
+                "SELECT idnecesidad, codigo, descripcion "
                 + "FROM necesidad "
                 + "WHERE idnecesidadpadre " + (padre == 0 ? "IS NULL" : "= " + padre));
         ArrayList<Necesidad> lista = new ArrayList<>();
         for (HashMap<String, String> row : table) {
             Necesidad n = new Necesidad(Integer.parseInt(row.get("idnecesidad")));
             n.setCodigo(row.get("codigo"));
-            n.setDescripcion(row.get("descipcion"));
+            n.setDescripcion(row.get("descripcion"));
             lista.add(n);
         }
         return lista;
@@ -97,7 +97,7 @@ public class NecesidadDAL {
                     + "VALUES "
                     + "('" + this.necesidad.getCodigo() + "', "
                     + "'" + this.necesidad.getDescripcion() + "', "
-                    + (padre == 0 ? "NULL" : "" + padre) + ", "
+                    + (padre == 0 ? "NULL" : padre)
                     + ")"));
         }
     }
@@ -132,7 +132,7 @@ public class NecesidadDAL {
                     "UPDATE necesidad SET "
                     + "codigo = '" + this.necesidad.getCodigo() + "', "
                     + "descripcion = '" + this.necesidad.getDescripcion() + "', "
-                    + "idnecesidadpare = " + (padre == 0 ? "NULL" : "" + padre)
+                    + "idnecesidadpadre = " + (padre == 0 ? "NULL" : padre)
                     + " WHERE idnecesidad = " + this.necesidad.getId());
         }
     }

@@ -319,6 +319,37 @@
         <url-pattern>/calificaciones/eliminar</url-pattern>
     </servlet-mapping>
 
+    <!-- Necesidades -->
+    <servlet>
+        <description>Listado de necesidades</description>
+        <servlet-name>listaNecesidades</servlet-name>
+        <servlet-class>necesidades.lista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaNecesidades</servlet-name>
+        <url-pattern>/necesidades/lista</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Inserta o actualiza una necesidad</description>
+        <servlet-name>guardarNecesidad</servlet-name>
+        <servlet-class>necesidades.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarNecesidad</servlet-name>
+        <url-pattern>/necesidades/guardar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Elimina una necesidad de la base de datos</description>
+        <servlet-name>eliminarNecesidad</servlet-name>
+        <servlet-class>necesidades.eliminar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>eliminarNecesidad</servlet-name>
+        <url-pattern>/necesidades/eliminar</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

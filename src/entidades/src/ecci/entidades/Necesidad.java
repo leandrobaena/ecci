@@ -108,7 +108,8 @@ public class Necesidad {
     public String toString() {
         return "{\"id\": " + this.id + ","
                 + "\"codigo\": \"" + this.codigo + "\","
-                + "\"descripcion\": \"" + this.descripcion + "\""
+                + "\"descripcion\": \"" + this.descripcion + "\","
+                + "\"leaf\": " + (this.codigo.contains(".") ? "true" : "false")
                 + "}";
     }
     //</editor-fold>
