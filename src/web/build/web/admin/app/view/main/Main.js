@@ -99,6 +99,16 @@ Ext.define('ecci.view.main.Main', {
             title: 'Calificaciones de software',
             iconCls: 'x-fa fa-check',
             xtype: 'listaCalificaciones'
+        }, {
+            title: 'Cerrar sesi&oacute;n',
+            iconCls: 'x-fa fa-times'
         }
-    ]
+    ],
+    listeners: {
+        tabchange: function (tp, n, o, op) {
+            if(n.title == "Cerrar sesi&oacute;n"){
+                window.location = 'logout.jsp'
+            }
+        }
+    }
 });
