@@ -64,6 +64,7 @@ public class ConexionMySQL {
         ds.setUser(this.user);
         ds.setPassword(this.password);
         ds.setServerTimezone(this.timeZone);
+        ds.setUseSSL(false);
 
         ArrayList<HashMap<String, String>> table = new ArrayList<>();
         try (Connection connection = ds.getConnection()) {
@@ -93,6 +94,7 @@ public class ConexionMySQL {
         ds.setUser(this.user);
         ds.setPassword(this.password);
         ds.setServerTimezone(this.timeZone);
+        ds.setUseSSL(false);
 
         int id = 0;
 
@@ -119,6 +121,7 @@ public class ConexionMySQL {
         ds.setUser(this.user);
         ds.setPassword(this.password);
         ds.setServerTimezone(this.timeZone);
+        ds.setUseSSL(false);
 
         try (Connection connection = ds.getConnection()) {
             Statement st = connection.createStatement();
@@ -138,6 +141,7 @@ public class ConexionMySQL {
         ds.setUser(this.user);
         ds.setPassword(this.password);
         ds.setServerTimezone(this.timeZone);
+        ds.setUseSSL(false);
 
         try (Connection connection = ds.getConnection()) {
             Statement st = connection.createStatement();

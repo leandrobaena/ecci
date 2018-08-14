@@ -38,10 +38,10 @@ public class validarUsuario extends HttpServlet {
         UsuarioBL usuario = new UsuarioBL(0, dbProperties);
         Usuario u = usuario.validarLogin(request.getParameter("login"), request.getParameter("password"));
         if (u.getId() == 0) {//Datos inválidos
-            response.sendRedirect("admin/login.jsp?e=Datos inválidos");
+            response.sendRedirect("../admin/login.jsp?e=Datos inválidos");
         } else { //Datos válidos
             request.getSession(true).setAttribute("usuario", u);
-            response.sendRedirect("admin/index.jsp");
+            response.sendRedirect("../admin/index.jsp");
         }
     }
 
