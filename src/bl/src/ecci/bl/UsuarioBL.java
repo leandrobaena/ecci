@@ -238,5 +238,14 @@ public class UsuarioBL {
     public ArrayList<Grupo> listarGruposExcluidos() throws SQLException {
         return this.usuarioDAL.listarGruposExcluidos();
     }
+
+    /**
+     * Valida que el login y la contraseña corresponden a un usuario del sistema
+     * @param login Login del usuario
+     * @param contrasenia Contraseña del usuario
+     */
+    public Usuario validarLogin(String login, String contrasenia) throws SQLException {
+        return this.usuarioDAL.validarLogin(login, contrasenia);
+    }
     //</editor-fold>
 }

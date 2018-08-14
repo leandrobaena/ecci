@@ -51,6 +51,16 @@
         <url-pattern>/usuarios/asociarGrupo</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <description>Valida el login y contraseña de un usuario</description>
+        <servlet-name>validarUsuario</servlet-name>
+        <servlet-class>usuarios.validarUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>validarUsuario</servlet-name>
+        <url-pattern>/usuarios/validarUsuario</url-pattern>
+    </servlet-mapping>
+    
     <!-- Grupos -->
     <servlet>
         <description>Listado de grupos</description>

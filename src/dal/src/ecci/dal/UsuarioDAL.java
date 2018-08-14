@@ -246,5 +246,28 @@ public class UsuarioDAL {
         }
         return grupos;
     }
+
+    /**
+     * Valida que el login y la contraseña corresponden a un usuario del sistema
+     *
+     * @param login Login del usuario
+     * @param contrasenia Contraseña del usuario
+     * @throws java.sql.SQLException
+     */
+    public Usuario validarLogin(String login, String contrasenia) throws SQLException {
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT idusuario, login, nombres, apellidos, activo "
+                + "FROM usuario "
+                + "WHERE login = '" + login + "' AND contrasenia = MD5('" + contrasenia + "') AND activo = 1");
+        for (HashMap<String, String> row : table) {
+            Usuario u = new Usuario(Integer.parseInt(row.get("idusuario")));
+            u.setLogin(row.get("login"));
+            u.setNombres(row.get("nombres"));
+            u.setApellidos(row.get("apellidos"));
+            u.setActivo(row.get("activo").equals("1"));
+            this.usuario = u;
+        }
+        return this.usuario;
+    }
     //</editor-fold>
 }
