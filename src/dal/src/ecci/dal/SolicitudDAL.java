@@ -98,11 +98,11 @@ public class SolicitudDAL {
      * @throws SQLException
      */
     public void insertar() throws SQLException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         if (solicitud != null) {
             this.solicitud.setId(this.conexion.insert(
                     "INSERT INTO solicitud "
-                    + "(fecha, nombre, email, idescolaridad, iprofesion) "
+                    + "(fecha, nombre, email, idescolaridad, idprofesion) "
                     + "VALUES "
                     + "('" + sdf.format(this.solicitud.getFecha()) + "', "
                     + "'" + this.solicitud.getNombre() + "', "

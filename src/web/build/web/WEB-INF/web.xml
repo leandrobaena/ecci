@@ -370,16 +370,27 @@
         <url-pattern>/necesidades/etiquetasNecesidad</url-pattern>
     </servlet-mapping>
     
+    <!-- Solicitudes -->
     <servlet>
-        <description>Asocia o disocia una etiqueta de una necesidad</description>
-        <servlet-name>asociarEtiqueta</servlet-name>
-        <servlet-class>necesidades.asociarEtiqueta</servlet-class>
+        <description>Listado de solicitudes</description>
+        <servlet-name>listaSolicitudes</servlet-name>
+        <servlet-class>solicitudes.lista</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>asociarEtiqueta</servlet-name>
-        <url-pattern>/necesidades/asociarEtiqueta</url-pattern>
+        <servlet-name>listaSolicitudes</servlet-name>
+        <url-pattern>/solicitudes/lista</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <description>Inserta o actualiza una solicitud</description>
+        <servlet-name>guardarSolicitudes</servlet-name>
+        <servlet-class>solicitudes.guardar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>guardarSolicitudes</servlet-name>
+        <url-pattern>/solicitudes/guardar</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

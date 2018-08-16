@@ -1654,7 +1654,6 @@ ul.icons > li:first-child:before {
 
 form label {
     font-weight: 600;
-    text-transform: uppercase;
     color: #888;
     display: block;
     margin: 0 0 1em 0;
@@ -1890,7 +1889,7 @@ button.alt:active,
 }
 
 #header > .container {
-    padding: 5em 0 7em 0;
+    padding: 5em 0 2em 0;
     border-bottom: solid 2px #e5e5e5;
 }
 
@@ -2070,6 +2069,11 @@ button.alt:active,
 
 #features ul.actions {
     margin-top: 1.25em;
+}
+
+#features label {
+    text-align: right;
+    margin-top: 10px;
 }
 
 /* Banner */
