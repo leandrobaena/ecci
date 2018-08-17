@@ -14,7 +14,8 @@ Ext.define('ecci.view.main.Main', {
         'ecci.view.etiquetas.Lista',
         'ecci.view.softwares.Lista',
         'ecci.view.calificaciones.Lista',
-        'ecci.view.necesidades.Lista'
+        'ecci.view.necesidades.Lista',
+        'ecci.view.solicitudes.Lista'
     ],
     controller: 'main',
     titleRotation: 0,
@@ -94,7 +95,8 @@ Ext.define('ecci.view.main.Main', {
             xtype: 'listaEtiquetas'
         }, {
             title: 'Solicitudes',
-            iconCls: 'x-fa fa-file'
+            iconCls: 'x-fa fa-file',
+            xtype: 'listaSolicitudes'
         }, {
             title: 'Calificaciones de software',
             iconCls: 'x-fa fa-check',

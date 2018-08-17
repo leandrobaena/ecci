@@ -1,5 +1,6 @@
 package ecci.entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -187,8 +188,10 @@ public class Solicitud {
      */
     @Override
     public String toString() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        
         return "{\"id\": " + this.id + ","
-                + "\"login\": \"" + this.fecha + "\","
+                + "\"fecha\": \"" + format.format(this.fecha) + "\","
                 + "\"nombre\": \"" + this.nombre + "\","
                 + "\"email\": \"" + this.email + "\","
                 + "\"escolaridad\": " + this.escolaridad + ","

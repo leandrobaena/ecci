@@ -73,7 +73,7 @@ public class SolicitudDAL {
      * @throws java.text.ParseException
      */
     public ArrayList<Solicitud> listar() throws SQLException, ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyy-mm-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
         ArrayList<HashMap<String, String>> table = this.conexion.select(
                 "SELECT idsolicitud, fecha, nombre, email, idescolaridad, escolaridad, idprofesion, profesion "
                 + "FROM vw_solicitud");
@@ -84,7 +84,7 @@ public class SolicitudDAL {
             s.setNombre(row.get("nombre"));
             s.setEmail(row.get("email"));
             s.setEscolaridad(new Escolaridad(Integer.parseInt(row.get("idescolaridad"))));
-            s.getEscolaridad().setNombre(row.get("escoralidad"));
+            s.getEscolaridad().setNombre(row.get("escolaridad"));
             s.setProfesion(new Profesion(Integer.parseInt(row.get("idprofesion"))));
             s.getProfesion().setNombre(row.get("profesion"));
             lista.add(s);
