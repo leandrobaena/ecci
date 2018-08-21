@@ -4,6 +4,7 @@ Ext.define('ecci.view.solicitudes.Lista', {
     requires: [
         'ecci.store.Solicitudes',
         'ecci.store.SolicitudDetalles',
+        'ecci.store.Metrica',
         'ecci.view.solicitudes.SolicitudesController'
     ],
     controller: 'solicitudes',
@@ -18,15 +19,25 @@ Ext.define('ecci.view.solicitudes.Lista', {
         {text: 'Email', dataIndex: 'email', flex: 1},
         {text: 'Escolaridad', dataIndex: 'escolaridad', flex: 1, renderer: function (value) {
                 return value.nombre;
-            }},
+            }
+        },
         {text: 'Profesion', dataIndex: 'profesion', flex: 1, renderer: function (value) {
                 return value.nombre;
-            }},
-        {xtype: 'actioncolumn', width: 50, items: [{
+            }
+        },
+        {
+            xtype: 'actioncolumn',
+            width: 50,
+            items: [{
                     iconCls: 'x-fa fa-info-circle',
                     tooltip: 'Detalles',
                     handler: 'detalles'
-                }]}
+                },{
+                    iconCls: 'x-fa fa-list-ol',
+                    tooltip: 'M&eacute;trica',
+                    handler: 'metrica'
+                }]
+        }
     ],
     dockedItems: [{
             xtype: 'pagingtoolbar',

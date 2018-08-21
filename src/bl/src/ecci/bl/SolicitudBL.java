@@ -2,6 +2,7 @@ package ecci.bl;
 
 import ecci.dal.SolicitudDAL;
 import ecci.entidades.Escolaridad;
+import ecci.entidades.Metrica;
 import ecci.entidades.Profesion;
 import ecci.entidades.Solicitud;
 import ecci.entidades.SolicitudDetalle;
@@ -10,7 +11,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -220,7 +220,7 @@ public class SolicitudBL {
      * @return Listado de detalles de esta solicitud
      * @throws SQLException
      */
-    public List<SolicitudDetalle> getDetalles() throws SQLException {
+    public ArrayList<SolicitudDetalle> getDetalles() throws SQLException {
         return this.solicitudDAL.getDetalles();
     }
 
@@ -252,6 +252,15 @@ public class SolicitudBL {
      */
     public void eliminarDetalle(SolicitudDetalle detalle) throws SQLException {
         this.solicitudDAL.eliminarDetalle(detalle);
+    }
+
+    /**
+     * Trae el resultado de aplicar la métrica sobre la solicitud
+     *
+     * @return Resultado de aplicar la métrica sobre la solicitud
+     */
+    public ArrayList<Metrica> getMetricas() throws SQLException {
+        return this.solicitudDAL.getMetricas();
     }
     //</editor-fold>
 }

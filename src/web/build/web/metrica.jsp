@@ -25,26 +25,35 @@
                             <!-- Post -->
                             <article class="box post">
                                 <header>
-                                    <h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-                                            but it’s the aliens.</a></h2>
+                                    <p>El resultado de la b&uacute;squeda de acuerdo a las necesidades que ingres&oacute; son:</p>
                                 </header>
-                                <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-                                <h3>I mean isn't it possible?</h3>
-                                <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-                                    ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-                                    sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-                                    in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-                                    magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-                                    consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-                                    justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-                                    mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-                                    Curabitur leo nibh, rutrum eu malesuada in tristique.</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button icon fa-file">Continue Reading</a></li>
-                                </ul>
                             </article>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-1 col-1-medium">
+                            <h3>Nombre</h3>
+                        </div>
+                        <div class="col-4 col-4-medium">
+                            <h3>Descripci&oacute;n</h3>
+                        </div>
+                        <div class="col-1 col-1-medium">
+                            <h3>Licencia</h3>
+                        </div>
+                        <div class="col-2 col-2-medium">
+                            <h3>Descarga</h3>
+                        </div>
+                        <div class="col-1 col-1-medium">
+                            <h3>Versi&oacute;n</h3>
+                        </div>
+                        <div class="col-2 col-2-medium">
+                            <h3>Necesidad</h3>
+                        </div>
+                        <div class="col-1 col-1-medium">
+                            <h3>Porcentaje</h3>
+                        </div>
+                    </div>
+                    <div id="result"></div>
                 </div>
             </section>
             <!-- Footer -->
@@ -63,5 +72,51 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            function cargarMetrica() {
+                $.ajax({
+                    url: './solicitudes/metrica',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        idsolicitud: <% out.write(request.getParameter("id"));%>
+                    },
+                    success: function (response) {
+                        var array = response.metricas;
+                        if (array != '') {
+                            for (i in array) {
+                                $("#result").append("<div class=\"row\">" +
+                                        "<div class=\"col-1 col-1-medium\">" +
+                                        array[i].nombre +
+                                        "</div>" +
+                                        "<div class=\"col-4 col-4-medium\">" +
+                                        array[i].descripcion +
+                                        "</div>" +
+                                        "<div class=\"col-1 col-1-medium\">" +
+                                        array[i].licencia +
+                                        "</div>" +
+                                        "<div class=\"col-2 col-2-medium\">" +
+                                        "<a href=\"" + array[i].url + "\" target=\"_blank\">" + array[i].url + "</a>" +
+                                        "</div>" +
+                                        "<div class=\"col-1 col-1-medium\">" +
+                                        array[i].version +
+                                        "</div>" +
+                                        "<div class=\"col-2 col-2-medium\">" +
+                                        array[i].necesidad +
+                                        "</div>" +
+                                        "<div class=\"col-1 col-1-medium\">" +
+                                        array[i].porcentaje + " %" +
+                                        "</div>" +
+                                        "</div>");
+                            }
+                        }
+                    }
+                });
+            }
+
+            $(function () {
+                cargarMetrica();
+            });
+        </script>
     </body>
 </html>

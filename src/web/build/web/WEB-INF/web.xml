@@ -391,6 +391,26 @@
         <url-pattern>/solicitudes/guardar</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <description>Listado de detalles de solicitud</description>
+        <servlet-name>listaDetalle</servlet-name>
+        <servlet-class>solicitudes.listaDetalle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listaDetalle</servlet-name>
+        <url-pattern>/solicitudes/listaDetalle</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description>Metrica</description>
+        <servlet-name>metrica</servlet-name>
+        <servlet-class>solicitudes.metrica</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>metrica</servlet-name>
+        <url-pattern>/solicitudes/metrica</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

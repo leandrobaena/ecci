@@ -12,13 +12,14 @@ Ext.define('ecci.view.solicitudes.SolicitudDetalles', {
             xtype: 'panel',
             items: [{
                     xtype: 'grid',
-                    title: 'Detalles',
                     store: {
-                        type: 'SolicitudDetalles'
+                        type: 'solicitudDetalles'
                     },
                     columns: [
                         {text: 'Id', dataIndex: 'id'},
-                        {text: 'Login', dataIndex: 'login', flex: 1}
+                        {text: 'Necesidad', dataIndex: 'necesidad', flex: 1},
+                        {text: 'Justificacion', dataIndex: 'justificacion', flex: 1},
+                        {text: 'Herramienta Actual', dataIndex: 'herramientaActual', flex: 1}
                     ]
                 }]
         }]

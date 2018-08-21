@@ -73,7 +73,7 @@ public class ConexionMySQL {
             while (rs.next()) {
                 HashMap<String, String> row = new HashMap<>();
                 for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                    row.put(rs.getMetaData().getColumnName(i + 1), rs.getString(i + 1));
+                    row.put(rs.getMetaData().getColumnLabel(i + 1), rs.getString(i + 1));
                 }
                 table.add(row);
             }

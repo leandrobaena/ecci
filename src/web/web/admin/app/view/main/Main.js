@@ -20,6 +20,7 @@ Ext.define('ecci.view.main.Main', {
     controller: 'main',
     titleRotation: 0,
     tabRotation: 0,
+    tabPosition: 'left',
     tabBar: {
         flex: 1,
         style: {
@@ -32,7 +33,7 @@ Ext.define('ecci.view.main.Main', {
     },
     responsiveConfig: {
         tall: {
-            headerPosition: 'top'
+            headerPosition: 'left'
         },
         wide: {
             headerPosition: 'left'

@@ -3,6 +3,7 @@ package ecci.dal;
 import ecci.entidades.Solicitud;
 import ecci.database.ConexionMySQL;
 import ecci.entidades.Escolaridad;
+import ecci.entidades.Metrica;
 import ecci.entidades.Profesion;
 import ecci.entidades.SolicitudDetalle;
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -177,7 +177,7 @@ public class SolicitudDAL {
      * @return Listado de detalles de esta solicitud
      * @throws SQLException
      */
-    public List<SolicitudDetalle> getDetalles() throws SQLException {
+    public ArrayList<SolicitudDetalle> getDetalles() throws SQLException {
         ArrayList<HashMap<String, String>> table = this.conexion.select(
                 "SELECT idsolicituddetalle, necesidad, justificacion, herramientaActual "
                 + "FROM solicituddetalle");
@@ -242,6 +242,84 @@ public class SolicitudDAL {
                     "DELETE FROM solicitudetalle "
                     + "WHERE idsolicituddetalle = " + detalle.getId());
         }
+    }
+
+    /**
+     * Trae el resultado de aplicar la métrica sobre la solicitud
+     *
+     * @return Resultado de aplicar la métrica sobre la solicitud
+     * @throws java.sql.SQLException
+     */
+    public ArrayList<Metrica> getMetricas() throws SQLException {
+        ArrayList<Metrica> metricas = new ArrayList<>();
+
+        /**
+         * 1. Consulta las necesidades expresadas por el usuario al momento de
+         * realizar la solicitud
+         */
+        ArrayList<HashMap<String, String>> table = this.conexion.select(
+                "SELECT necesidad FROM solicituddetalle WHERE idsolicitud = " + this.solicitud.getId());
+
+        ArrayList<String> necesidades = new ArrayList<>();
+
+        for (HashMap<String, String> row : table) {
+            String necesidad = row.get("necesidad");
+            necesidades.add(necesidad);
+        }
+
+        /**
+         * 2. Realiza un listado de palabras únicas a partir de las necesidades
+         * expresadas por el usuario
+         */
+        ArrayList<String> palabras = new ArrayList<>();
+        for (String necesidad : necesidades) {
+            String[] palabrasAux = necesidad.split(" ");
+            for (String palabra : palabrasAux) {
+                if (!palabras.contains(palabra)) {
+                    palabras.add(palabra);
+                }
+            }
+        }
+
+        /**
+         * 3. Realiza la consulta que realiza en sí la métrica
+         */
+        StringBuilder etiquetas = new StringBuilder();
+        for (String palabra : palabras) {
+            if (etiquetas.length() != 0) {
+                etiquetas.append(",");
+            }
+            etiquetas.append("'").append(palabra).append("'");
+        }
+
+        table = this.conexion.select(
+                "SELECT "
+                + "s.nombre, s.descripcion, s.licencia, s.url, s.version, "
+                + "n.descripcion AS necesidad, c.porcentaje "
+                + "FROM "
+                + "calificacion c "
+                + "INNER JOIN etiqueta e ON c.idetiqueta = e.idetiqueta "
+                + "INNER JOIN software s ON c.idsoftware = s.idsoftware "
+                + "LEFT JOIN etiquetanecesidad en ON c.idetiqueta = en.idetiqueta "
+                + "LEFT JOIN necesidad n on en.idnecesidad = n.idnecesidad "
+                + "WHERE "
+                + "e.nombre IN (" + etiquetas.toString() + ") "
+                + "ORDER BY "
+                + "c.porcentaje DESC");
+
+        for (HashMap<String, String> row : table) {
+            Metrica m = new Metrica();
+            m.setNombre(row.get("nombre"));
+            m.setDescripcion(row.get("descripcion"));
+            m.setLicencia(row.get("licencia"));
+            m.setUrl(row.get("url"));
+            m.setVersion(row.get("version"));
+            m.setNecesidad(row.get("necesidad") == null ? "N/A" : row.get("necesidad"));
+            m.setPorcentaje(Integer.parseInt(row.get("porcentaje")));
+
+            metricas.add(m);
+        }
+        return metricas;
     }
     //</editor-fold>
 }
