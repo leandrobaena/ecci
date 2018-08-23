@@ -162,7 +162,7 @@ public class NecesidadDAL {
                     "INSERT INTO etiquetanecesidad "
                     + "(idnecesidad, idetiqueta) "
                     + "VALUES "
-                    + "(" + etiqueta.getId() + ", " + this.necesidad.getId() + ")");
+                    + "(" + this.necesidad.getId() + ", " + etiqueta.getId() + ")");
         }
     }
 
