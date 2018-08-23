@@ -12,7 +12,9 @@ Ext.define('ecci.view.necesidades.NecesidadesController', {
     editar: function (v, rn, c, i, e, rec, row) {
         var w = Ext.create('editarNecesidad');
         w.down('form').loadRecord(rec);
-        w.down('form').getForm().findField('idnecesidadpadre').setValue(rec.get('parentId'));
+        if (rec.get('parentId') != "root") {
+            w.down('form').getForm().findField('idnecesidadpadre').setValue(rec.get('parentId'));
+        }
         w.show();
     },
     guardar: function (b) {
