@@ -192,7 +192,7 @@
                         herramientaActual: herramientaActual
                     },
                     success: function (response) {
-                        window.location = "metrica.jsp?s=" + response.idsolicitud;
+                        window.location = "metrica.jsp?id=" + response.idsolicitud;
                     },
                     error: function () {
                         alert('Error a realizar la consulta');
